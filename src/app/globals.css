@@ -194,6 +194,76 @@ body {
 .card:hover { border-color: rgba(201,168,76,0.35); }
 .card:hover::after { width: 100%; }
 
+/* ─── RESPONSIVE GRIDS ──────────────────────────────────────────── */
+.r-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.r-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.r-grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.r-grid-form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  align-items: start;
+}
+.r-grid-form-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.r-grid-form-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.r-grid-sidebar-420 {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.r-grid-sidebar-380 {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ─── RESPONSIVE PADDING ─────────────────────────────────────────── */
+.r-section { max-width: 1280px; margin: 0 auto; padding: 96px 40px; }
+.r-hero-inner { max-width: 1280px; margin: 0 auto; padding: 180px 40px 80px; width: 100%; }
+.r-page-header { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
+@media (max-width: 900px) {
+  .r-grid-2col         { grid-template-columns: 1fr; gap: 40px; }
+  .r-grid-form         { grid-template-columns: 1fr; gap: 40px; }
+  .r-grid-sidebar-420  { grid-template-columns: 1fr; gap: 40px; }
+  .r-grid-sidebar-380  { grid-template-columns: 1fr; gap: 40px; }
+  .r-section           { padding: 64px 24px; }
+  .r-hero-inner        { padding: 140px 24px 60px; }
+  .r-page-header       { padding: 0 24px; }
+}
+@media (max-width: 640px) {
+  .r-grid-3col    { grid-template-columns: repeat(2, 1fr); }
+  .r-grid-4col    { grid-template-columns: repeat(2, 1fr); }
+  .r-grid-form-2  { grid-template-columns: 1fr; }
+  .r-grid-form-3  { grid-template-columns: 1fr; }
+  .r-section      { padding: 48px 20px; }
+  .r-hero-inner   { padding: 110px 20px 48px; }
+  .r-page-header  { padding: 0 20px; }
+}
+
 /* ─── MASONRY ────────────────────────────────────────────────────── */
 .masonry { columns: 3; column-gap: 10px; }
 .masonry > * { break-inside: avoid; margin-bottom: 10px; }

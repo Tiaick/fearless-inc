@@ -30,8 +30,8 @@ export default function BuchenPage() {
   return (
     <>
       {/* ─── PAGE HEADER ──────────────────────────────────────────── */}
-      <section style={{ background: 'var(--bg2)', paddingTop: '140px', paddingBottom: '72px', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
+      <section style={{ background: 'var(--bg2)', paddingTop: 'clamp(100px, 14vw, 140px)', paddingBottom: '72px', borderBottom: '1px solid var(--border)' }}>
+        <div className="r-page-header">
           <ScrollReveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
               <span className="gold-bar" />
@@ -49,7 +49,7 @@ export default function BuchenPage() {
 
       {/* ─── ABLAUF ──────────────────────────────────────────────── */}
       <section style={{ background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 40px' }}>
+        <div className="r-section">
           <ScrollReveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
               <span className="gold-bar" />
@@ -76,8 +76,8 @@ export default function BuchenPage() {
 
       {/* ─── FORMULAR ────────────────────────────────────────────── */}
       <section style={{ background: 'var(--bg2)', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 40px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '64px', alignItems: 'start' }} className="max-md:grid-cols-1">
+        <div className="r-section">
+          <div className="r-grid-form">
 
             {/* LEFT — info */}
             <ScrollReveal>
@@ -120,7 +120,7 @@ export default function BuchenPage() {
                 </div>
               ) : (
                 <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }} className="max-sm:grid-cols-1">
+                  <div className="r-grid-form-2">
                     <div>
                       <label className="input-label">Vollständiger Name *</label>
                       <input className="input" type="text" name="name" required value={form.name} onChange={set} placeholder="Dein Name" />
@@ -141,7 +141,7 @@ export default function BuchenPage() {
                     <textarea className="input" name="idea" required value={form.idea} onChange={set} rows={5} placeholder="Beschreibe deine Idee ausführlich — Motive, Symbolik, Stil, Referenzen…" style={{ resize: 'vertical', lineHeight: 1.7 }} />
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }} className="max-sm:grid-cols-1">
+                  <div className="r-grid-form-3">
                     <div>
                       <label className="input-label">Körperstelle *</label>
                       <input className="input" type="text" name="placement" required value={form.placement} onChange={set} placeholder="z.B. Unterarm" />
@@ -186,7 +186,7 @@ export default function BuchenPage() {
 
       {/* ─── CAL.COM EMBED ───────────────────────────────────────── */}
       <section style={{ background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 40px' }}>
+        <div className="r-section">
           <ScrollReveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
               <span className="gold-bar" />
@@ -199,7 +199,7 @@ export default function BuchenPage() {
           <ScrollReveal className="delay-1">
             <div style={{ border: '1px solid var(--border)', overflow: 'hidden', background: 'var(--bg2)' }}>
               <iframe
-                src="https://cal.com/fearless"
+                src="https://www.cal.eu/fearless"
                 width="100%"
                 height="700"
                 style={{ border: 0, display: 'block', colorScheme: 'dark' }}
@@ -212,7 +212,7 @@ export default function BuchenPage() {
 
       {/* ─── TIPPS ───────────────────────────────────────────────── */}
       <section style={{ background: 'var(--bg)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 40px' }}>
+        <div className="r-section">
           <ScrollReveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
               <span className="gold-bar" />

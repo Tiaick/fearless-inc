@@ -23,8 +23,8 @@ export default function KontaktPage() {
   return (
     <>
       {/* ─── PAGE HEADER ──────────────────────────────────────────── */}
-      <section style={{ background: 'var(--bg2)', paddingTop: '140px', paddingBottom: '64px', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
+      <section style={{ background: 'var(--bg2)', paddingTop: 'clamp(100px, 14vw, 140px)', paddingBottom: '64px', borderBottom: '1px solid var(--border)' }}>
+        <div className="r-page-header">
           <ScrollReveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
               <span className="gold-bar" />
@@ -42,9 +42,8 @@ export default function KontaktPage() {
 
       {/* ─── HAUPT-GRID ──────────────────────────────────────────── */}
       <section style={{ background: 'var(--bg)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 40px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: '64px', alignItems: 'start' }}
-            className="max-lg:block">
+        <div className="r-section">
+          <div className="r-grid-sidebar-380">
 
             {/* ── LINKE SPALTE: Info ───────────────────────────────── */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
@@ -174,7 +173,7 @@ export default function KontaktPage() {
                 ) : (
                   <form onSubmit={e => { e.preventDefault(); setSent(true); }}
                     style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }} className="max-sm:block">
+                    <div className="r-grid-form-2">
                       <div>
                         <label className="input-label">Dein Name *</label>
                         <input className="input" type="text" name="name" required
@@ -216,7 +215,7 @@ export default function KontaktPage() {
 
       {/* ─── KARTE ───────────────────────────────────────────────── */}
       <section style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px 0' }}>
+        <div className="r-page-header">
           <div style={{ position: 'relative', height: '380px', overflow: 'hidden', border: '1px solid var(--border)', borderTop: 'none' }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2365.8935!2d9.98012!3d53.72485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b20cbdca4adb35%3A0x0!2zS8O2bmlnc2JlcmdlciBTdHIuIDIsIDI1NDc5IEVsbGVyYXU!5e0!3m2!1sde!2sde!4v1700000000000"

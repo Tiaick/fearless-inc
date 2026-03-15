@@ -40,7 +40,7 @@ export default function ArtistPage() {
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--bg) 0%, rgba(10,10,10,0.4) 60%, transparent 100%)' }} />
         </div>
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '1280px', margin: '0 auto', padding: '200px 40px 80px', width: '100%' }}>
+        <div className="r-hero-inner" style={{ position: 'relative', zIndex: 1 }}>
           <ScrollReveal>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
               <span className="gold-bar" />
@@ -58,9 +58,8 @@ export default function ArtistPage() {
 
       {/* ─── STORY ───────────────────────────────────────────────── */}
       <section style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '96px 40px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '420px 1fr', gap: '80px', alignItems: 'start' }}
-            className="max-lg:block">
+        <div className="r-section">
+          <div className="r-grid-sidebar-420">
 
             {/* Sticky image */}
             <ScrollReveal>
@@ -129,7 +128,7 @@ export default function ArtistPage() {
 
       {/* ─── PHILOSOPHIE ─────────────────────────────────────────── */}
       <section style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '96px 40px' }}>
+        <div className="r-section">
           <ScrollReveal>
             <div style={{ textAlign: 'center', marginBottom: '56px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', marginBottom: '16px' }}>
@@ -159,7 +158,7 @@ export default function ArtistPage() {
 
       {/* ─── PORTFOLIO ───────────────────────────────────────────── */}
       <section style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '96px 40px' }}>
+        <div className="r-section">
           <ScrollReveal>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px', marginBottom: '48px' }}>
               <div>
@@ -175,7 +174,7 @@ export default function ArtistPage() {
             </div>
           </ScrollReveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }} className="max-sm:grid-cols-2">
+          <div className="r-grid-3col">
             {portfolio.map((src, i) => (
               <ScrollReveal key={i} delay={i * 50}>
                 <Link href="/galerie" data-hover style={{ textDecoration: 'none', display: 'block' }}>
@@ -192,8 +191,8 @@ export default function ArtistPage() {
       </section>
 
       {/* ─── CTA ─────────────────────────────────────────────────── */}
-      <section style={{ background: 'var(--gold)', padding: '80px 0' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
+      <section style={{ background: 'var(--gold)' }}>
+        <div className="r-section">
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '32px' }}>
             <ScrollReveal>
               <h2 className="f-display" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', color: 'var(--bg)', lineHeight: 0.95 }}>
