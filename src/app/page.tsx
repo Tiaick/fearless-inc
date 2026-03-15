@@ -3,163 +3,153 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 
 const styles = [
-  { icon: '◆', title: 'Blackwork', desc: 'Präzise schwarze Kunst. Fette Flächen, scharfe Linien, dunkle Energie.' },
-  { icon: '◇', title: 'Realism', desc: 'Fotorealistische Motive. Portraits, Tiere und Natur in atemberaubender Detailtreue.' },
-  { icon: '◈', title: 'Fine Line', desc: 'Zarte, präzise Linienarbeit. Botanik, Porträts und geometrische Elemente.' },
-  { icon: '◉', title: 'Geometric', desc: 'Mathematische Ästhetik. Mandalas, Sacred Geometry und ornamentale Muster.' },
-  { icon: '◐', title: 'Custom', desc: 'Deine Idee, von Grund auf neu entworfen. Kein Template, pure Kunst.' },
-  { icon: '◑', title: 'Cover-Up', desc: 'Alte Tattoos neu denken. Professionelle Überarbeitung mit kreativem Ansatz.' },
+  { title: 'Blackwork', desc: 'Fette schwarze Flächen, scharfe Linien und dunkle ornamentale Energie.' },
+  { title: 'Realism', desc: 'Fotorealistische Portraits, Tiere und Szenen in atemberaubender Detailtreue.' },
+  { title: 'Fine Line', desc: 'Zarte, präzise Linienarbeit. Botanik, Porträts und geometrische Elemente.' },
+  { title: 'Geometric', desc: 'Mandalas, Sacred Geometry und ornamentale Muster mit mathematischer Perfektion.' },
+  { title: 'Custom', desc: 'Deine Idee, von Grund auf neu designed. Kein Template — pure, einzigartige Kunst.' },
+  { title: 'Cover-Up', desc: 'Alte Tattoos neu denken und professionell überarbeiten. Kreativ, präzise, endgültig.' },
 ];
 
-const featured = [
-  { src: 'https://picsum.photos/seed/feat1/800/1000', alt: 'Blackwork Sleeve', cat: 'Blackwork', tall: true },
-  { src: 'https://picsum.photos/seed/feat2/800/600', alt: 'Fine Line Botanik', cat: 'Fine Line', tall: false },
-  { src: 'https://picsum.photos/seed/feat3/800/600', alt: 'Realism Portrait', cat: 'Realism', tall: false },
-  { src: 'https://picsum.photos/seed/feat4/800/1000', alt: 'Geometric Mandala', cat: 'Geometric', tall: true },
-  { src: 'https://picsum.photos/seed/feat5/800/600', alt: 'Custom Arbeit', cat: 'Custom', tall: false },
-  { src: 'https://picsum.photos/seed/feat6/800/600', alt: 'Ornamental', cat: 'Blackwork', tall: false },
+const grid = [
+  { seed: 'fw1', aspect: '3/4' },
+  { seed: 'fw2', aspect: '1/1' },
+  { seed: 'fw3', aspect: '1/1' },
+  { seed: 'fw4', aspect: '3/4' },
+  { seed: 'fw5', aspect: '1/1' },
+  { seed: 'fw6', aspect: '1/1' },
 ];
-
-const igGrid = Array.from({ length: 6 }, (_, i) => `https://picsum.photos/seed/ig${i + 1}/500/500`);
 
 export default function Home() {
   return (
     <>
-      {/* ─── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col justify-end" style={{ overflow: 'hidden' }}>
-        {/* BG image */}
-        <div className="absolute inset-0 z-0">
+      {/* ═══════════════════════════════ HERO ═══════════════════════ */}
+      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <Image
-            src="https://picsum.photos/seed/hero-bg-dark/1920/1080"
-            alt="Fearless Inc Hero"
+            src="https://picsum.photos/seed/hero-tattoo/1920/1080"
+            alt="Fearless Inc"
             fill priority
-            className="object-cover object-center"
-            style={{ filter: 'grayscale(0.5) brightness(0.3) contrast(1.2)' }}
+            style={{ objectFit: 'cover', objectPosition: 'center', filter: 'grayscale(0.4) brightness(0.28) contrast(1.15)' }}
           />
-          {/* Gradient */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, rgba(17,20,24,0.97) 0%, rgba(17,20,24,0.7) 50%, rgba(17,20,24,0.4) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(10,10,10,0.97) 30%, rgba(10,10,10,0.55) 70%, rgba(10,10,10,0.2) 100%)' }} />
         </div>
 
-        {/* Decorative vertical text */}
-        <div className="absolute right-8 bottom-1/3 z-10 hidden xl:flex flex-col items-center gap-6">
-          <span style={{ width: '1px', height: '80px', background: 'linear-gradient(to bottom, transparent, var(--bronze))', display: 'block' }} />
-          <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.6rem', letterSpacing: '0.4em', color: 'var(--muted)', writingMode: 'vertical-rl', textTransform: 'uppercase' }}>
-            Scroll down
-          </span>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16 pb-20 pt-44 w-full">
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="line-bronze" />
-              <span className="section-label">Tattoo Studio · Ellerau</span>
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '1280px', margin: '0 auto', padding: '180px 40px 80px', width: '100%' }}>
+          <ScrollReveal>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px' }}>
+              <span className="gold-bar" />
+              <span className="f-label">Tattoo Studio · Ellerau</span>
             </div>
+          </ScrollReveal>
 
-            <h1 style={{ fontFamily: 'var(--font-display)', lineHeight: 0.9, letterSpacing: '0.03em', color: '#f0ece4' }}>
-              <span className="block" style={{ fontSize: 'clamp(4rem, 12vw, 10rem)' }}>FEARLESS</span>
-              <span className="block" style={{ fontSize: 'clamp(4rem, 12vw, 10rem)', color: 'var(--bronze)', WebkitTextStroke: '1px var(--bronze)', WebkitTextFillColor: 'transparent' }}>INC.</span>
+          <ScrollReveal className="delay-1">
+            <h1 className="f-display" style={{ fontSize: 'clamp(5.5rem, 14vw, 13rem)', color: 'var(--white)', marginBottom: '8px' }}>
+              FEARLESS
             </h1>
+            <h1 className="f-display" style={{ fontSize: 'clamp(5.5rem, 14vw, 13rem)', color: 'transparent', WebkitTextStroke: '1.5px var(--gold)', marginBottom: '32px' }}>
+              INC.
+            </h1>
+          </ScrollReveal>
 
-            <p className="mt-6 mb-10 max-w-lg" style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: '1rem', lineHeight: 1.8, color: 'var(--cream-dim)' }}>
-              Tattoo Kunst auf höchstem Niveau. Jedes Motiv wird individuell für dich entworfen und mit absoluter Präzision in die Haut gestochen.
+          <ScrollReveal className="delay-2">
+            <p className="f-body" style={{ fontSize: '1.05rem', lineHeight: 1.85, color: 'var(--dim)', maxWidth: '480px', marginBottom: '36px' }}>
+              Tattoo Kunst auf höchstem Niveau. Jedes Motiv wird individuell entworfen und mit absoluter Präzision in die Haut gestochen.
             </p>
+          </ScrollReveal>
 
-            <div className="flex flex-wrap gap-4">
-              <Link href="/buchen" data-hover className="btn-bronze">
-                Termin anfragen
-                <span>→</span>
-              </Link>
-              <Link href="/galerie" data-hover className="btn-outline">
-                Portfolio ansehen
-              </Link>
+          <ScrollReveal className="delay-3">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '56px' }}>
+              <Link href="/buchen" data-hover className="btn-gold" style={{ textDecoration: 'none' }}>Termin anfragen →</Link>
+              <Link href="/galerie" data-hover className="btn-ghost" style={{ textDecoration: 'none' }}>Portfolio ansehen</Link>
             </div>
+          </ScrollReveal>
 
-            {/* Stats */}
-            <div className="mt-16 pt-8 flex flex-wrap gap-10" style={{ borderTop: '1px solid rgba(201,168,76,0.15)' }}>
-              {[
-                { n: '8+', label: 'Jahre Erfahrung' },
-                { n: '2K+', label: 'Gestochene Tattoos' },
-                { n: '100%', label: 'Custom Designs' },
-              ].map(s => (
-                <div key={s.label}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: 'var(--bronze)', lineHeight: 1 }}>{s.n}</div>
-                  <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.6rem', letterSpacing: '0.2em', color: 'var(--muted)', marginTop: '4px', textTransform: 'uppercase' }}>{s.label}</div>
+          <ScrollReveal className="delay-4">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', paddingTop: '32px', borderTop: '1px solid rgba(201,168,76,0.12)' }}>
+              {[['8+', 'Jahre Erfahrung'], ['2.000+', 'Tattoos gestochen'], ['100%', 'Custom Designs']].map(([n, l]) => (
+                <div key={l}>
+                  <div className="f-display" style={{ fontSize: '2.8rem', color: 'var(--gold)', lineHeight: 1 }}>{n}</div>
+                  <div className="f-label" style={{ color: 'var(--muted)', marginTop: '4px', fontSize: '0.58rem' }}>{l}</div>
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* ─── ÜBER PETZKO ─────────────────────────────────────────── */}
-      <section style={{ background: 'var(--charcoal-2)' }}>
-        <div className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16 py-24 md:py-36">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      {/* ═══════════════════════════════ ÜBER PETZKO ════════════════ */}
+      <section style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '96px 40px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }} className="max-md:grid-cols-1">
             <ScrollReveal>
-              <div className="relative">
-                <div className="img-hover" style={{ position: 'relative' }}>
+              <div style={{ position: 'relative' }}>
+                <div className="img-cell">
                   <Image
-                    src="https://picsum.photos/seed/petzko-main/800/1000"
+                    src="https://picsum.photos/seed/petzko-artist/800/1000"
                     alt="Petzko – Tattoo Artist"
                     width={800} height={1000}
-                    className="w-full object-cover"
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
                   />
                 </div>
-                {/* Experience badge */}
-                <div className="absolute -bottom-5 -right-5 p-6 z-10" style={{ background: 'var(--bronze)', minWidth: '120px', textAlign: 'center' }}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.8rem', color: 'var(--charcoal)', lineHeight: 1 }}>8+</div>
-                  <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.55rem', letterSpacing: '0.2em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>Jahre</div>
+                {/* badge */}
+                <div style={{ position: 'absolute', bottom: '-16px', right: '-16px', background: 'var(--gold)', padding: '20px 24px', textAlign: 'center' }}>
+                  <div className="f-display" style={{ fontSize: '2.5rem', color: 'var(--bg)', lineHeight: 1 }}>8+</div>
+                  <div className="f-label" style={{ color: 'rgba(10,10,10,0.65)', fontSize: '0.5rem' }}>Jahre</div>
                 </div>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={120}>
-              <div className="flex items-center gap-4 mb-6">
-                <span className="line-bronze" />
-                <span className="section-label">Der Artist</span>
-              </div>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 6vw, 5.5rem)', letterSpacing: '0.04em', color: '#f0ece4', lineHeight: 0.95, marginBottom: '24px' }}>
-                PETZKO
-              </h2>
-              <p style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: '1rem', lineHeight: 1.85, color: 'var(--cream-dim)', marginBottom: '16px' }}>
-                Petzko ist nicht einfach ein Tätowierer — er ist ein Künstler, der Haut als seine Leinwand sieht. Mit über acht Jahren Erfahrung und tausenden gestochenen Motiven hat er sein Handwerk auf ein Niveau perfektioniert, das für sich spricht.
-              </p>
-              <p style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.85, color: 'var(--muted)', marginBottom: '32px' }}>
-                Sein Studio Fearless Inc in Ellerau ist mehr als ein Ort — es ist ein kreativer Raum, in dem jede Vision Wirklichkeit wird. Von feinen Linienarbeiten bis zu mächtigen Blackwork-Pieces, von realistischen Portraits bis zu geometrischen Meisterwerken.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/artist" data-hover className="btn-bronze">Mehr über Petzko</Link>
-                <Link href="/galerie" data-hover className="btn-outline">Portfolio</Link>
+            <ScrollReveal className="delay-2">
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+                  <span className="gold-bar" />
+                  <span className="f-label">Der Artist</span>
+                </div>
+                <h2 className="f-display" style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', color: 'var(--white)', marginBottom: '24px' }}>
+                  PETZKO
+                </h2>
+                <p className="f-body" style={{ fontSize: '1rem', lineHeight: 1.85, color: 'var(--dim)', marginBottom: '16px' }}>
+                  Petzko ist nicht einfach ein Tätowierer — er ist ein Künstler, der Haut als seine Leinwand sieht. Mit über acht Jahren Erfahrung und tausenden gestochenen Motiven hat er sein Handwerk auf ein Niveau perfektioniert, das für sich spricht.
+                </p>
+                <p className="f-body" style={{ fontSize: '0.92rem', lineHeight: 1.85, color: 'var(--muted)', marginBottom: '36px' }}>
+                  Sein Studio Fearless Inc in Ellerau ist ein privater kreativer Raum, in dem jede Vision Wirklichkeit wird. Keine Vorlagen, keine Kompromisse — nur Kunst.
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+                  <Link href="/artist" data-hover className="btn-gold" style={{ textDecoration: 'none' }}>Mehr über Petzko</Link>
+                  <Link href="/galerie" data-hover className="btn-ghost" style={{ textDecoration: 'none' }}>Portfolio</Link>
+                </div>
               </div>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ─── STYLES ──────────────────────────────────────────────── */}
-      <section style={{ background: 'var(--charcoal)' }}>
-        <div className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16 py-24">
+      {/* ═══════════════════════════════ STILE ══════════════════════ */}
+      <section style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '96px 40px' }}>
           <ScrollReveal>
-            <div className="text-center mb-16">
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <span className="line-bronze" />
-                <span className="section-label">Tattoo Stile</span>
-                <span className="line-bronze" />
+            <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', marginBottom: '16px' }}>
+                <span className="gold-bar" />
+                <span className="f-label">Tattoo Stile</span>
+                <span className="gold-bar" />
               </div>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 6vw, 5rem)', letterSpacing: '0.05em', color: '#f0ece4', lineHeight: 0.95 }}>
+              <h2 className="f-display" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', color: 'var(--white)' }}>
                 SPEZIALISIERUNGEN
               </h2>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
             {styles.map((s, i) => (
-              <ScrollReveal key={s.title} delay={i * 60}>
-                <div className="service-card">
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: 'var(--bronze)', lineHeight: 1, marginBottom: '16px', opacity: 0.6 }}>{s.icon}</div>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', letterSpacing: '0.08em', color: '#f0ece4', marginBottom: '12px' }}>{s.title}</h3>
-                  <p style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'var(--muted)' }}>{s.desc}</p>
+              <ScrollReveal key={s.title} delay={i * 50}>
+                <div className="card">
+                  <div className="f-display" style={{ fontSize: '3rem', color: 'rgba(201,168,76,0.15)', lineHeight: 1, marginBottom: '16px' }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <h3 className="f-display" style={{ fontSize: '1.75rem', color: 'var(--white)', marginBottom: '12px' }}>{s.title}</h3>
+                  <p className="f-body" style={{ fontSize: '0.85rem', lineHeight: 1.75, color: 'var(--muted)' }}>{s.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -167,38 +157,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── PORTFOLIO ───────────────────────────────────────────── */}
-      <section style={{ background: 'var(--charcoal-2)' }}>
-        <div className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16 py-24">
+      {/* ═══════════════════════════════ PORTFOLIO ══════════════════ */}
+      <section style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '96px 40px' }}>
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px', marginBottom: '48px' }}>
               <div>
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="line-bronze" />
-                  <span className="section-label">Portfolio</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
+                  <span className="gold-bar" />
+                  <span className="f-label">Portfolio</span>
                 </div>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 6vw, 5rem)', letterSpacing: '0.05em', color: '#f0ece4', lineHeight: 0.95 }}>
+                <h2 className="f-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', color: 'var(--white)' }}>
                   AKTUELLE<br />ARBEITEN
                 </h2>
               </div>
-              <Link href="/galerie" data-hover className="btn-outline shrink-0">Alle Arbeiten →</Link>
+              <Link href="/galerie" data-hover className="btn-ghost" style={{ textDecoration: 'none' }}>Alle Arbeiten →</Link>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {featured.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 50}>
-                <Link href="/galerie" data-hover>
-                  <div className="img-hover" style={{ position: 'relative' }}>
-                    <div className="relative overflow-hidden" style={{ aspectRatio: item.tall ? '3/4' : '4/3' }}>
-                      <Image src={item.src} alt={item.alt} fill className="object-cover" />
-                    </div>
-                    <div
-                      className="absolute bottom-0 left-0 right-0 p-3 opacity-0 transition-opacity duration-400 group-hover:opacity-100"
-                      style={{ background: 'linear-gradient(to top, rgba(17,20,24,0.9), transparent)', position: 'absolute', bottom: 0, left: 0, right: 0, padding: '16px' }}
-                    >
-                      <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.6rem', letterSpacing: '0.2em', color: 'var(--bronze)', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>{item.cat}</span>
-                      <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.85rem', color: '#f0ece4' }}>{item.alt}</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }} className="max-sm:grid-cols-2">
+            {grid.map((item, i) => (
+              <ScrollReveal key={item.seed} delay={i * 45}>
+                <Link href="/galerie" data-hover style={{ textDecoration: 'none', display: 'block' }}>
+                  <div className="img-cell">
+                    <div style={{ position: 'relative', aspectRatio: item.aspect, overflow: 'hidden' }}>
+                      <Image
+                        src={`https://picsum.photos/seed/${item.seed}/700/900`}
+                        alt={`Tattoo Arbeit ${i + 1}`}
+                        fill style={{ objectFit: 'cover' }}
+                      />
                     </div>
                   </div>
                 </Link>
@@ -208,44 +195,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── BUCHUNG CTA ─────────────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ minHeight: '500px' }}>
-        <div className="absolute inset-0 z-0">
+      {/* ═══════════════════════════════ CTA BANNER ═════════════════ */}
+      <section style={{ position: 'relative', overflow: 'hidden', minHeight: '480px', display: 'flex', alignItems: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0 }}>
           <Image
-            src="https://picsum.photos/seed/cta-bg-dark/1920/800"
+            src="https://picsum.photos/seed/cta-tattoo/1920/800"
             alt="Studio"
-            fill className="object-cover"
-            style={{ filter: 'grayscale(0.6) brightness(0.25) contrast(1.1)' }}
+            fill
+            style={{ objectFit: 'cover', filter: 'grayscale(0.5) brightness(0.2) contrast(1.2)' }}
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(17,20,24,0.98) 40%, rgba(17,20,24,0.5) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(10,10,10,0.98) 40%, rgba(10,10,10,0.6) 100%)' }} />
         </div>
-        <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16 py-24 md:py-36">
-          <div className="max-w-xl">
+
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '1280px', margin: '0 auto', padding: '80px 40px', width: '100%' }}>
+          <div style={{ maxWidth: '600px' }}>
             <ScrollReveal>
-              <div className="flex items-center gap-4 mb-6">
-                <span className="line-bronze" />
-                <span className="section-label">Termin buchen</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+                <span className="gold-bar" />
+                <span className="f-label">Termin buchen</span>
               </div>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 7vw, 6rem)', letterSpacing: '0.04em', color: '#f0ece4', lineHeight: 0.9, marginBottom: '20px' }}>
+              <h2 className="f-display" style={{ fontSize: 'clamp(3rem, 7vw, 6.5rem)', color: 'var(--white)', marginBottom: '20px', lineHeight: 0.92 }}>
                 BEREIT FÜR<br />DEIN TATTOO?
               </h2>
-              <p style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: '0.95rem', lineHeight: 1.8, color: 'var(--cream-dim)', marginBottom: '32px' }}>
+              <p className="f-body" style={{ fontSize: '0.95rem', lineHeight: 1.85, color: 'var(--dim)', marginBottom: '32px', maxWidth: '440px' }}>
                 Jedes Tattoo beginnt mit einem Gespräch. Teile deine Idee und Petzko meldet sich persönlich zurück.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/buchen" data-hover className="btn-bronze">Jetzt anfragen →</Link>
-                <a href="tel:015222458669" data-hover className="btn-outline">01522 2458669</a>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '36px' }}>
+                <Link href="/buchen" data-hover className="btn-gold" style={{ textDecoration: 'none' }}>Jetzt anfragen →</Link>
+                <a href="tel:015222458669" data-hover className="btn-ghost" style={{ textDecoration: 'none' }}>01522 2458669</a>
               </div>
-
-              <div className="mt-10 flex flex-col gap-2">
-                {[
-                  'Mo–Fr 12:00–17:00 Uhr',
-                  'Königsberger Str. 2, 25479 Ellerau',
-                  '@fearless.tattoo auf Instagram',
-                ].map(txt => (
-                  <div key={txt} className="flex items-center gap-3">
-                    <span style={{ width: '6px', height: '6px', background: 'var(--bronze)', borderRadius: '50%', display: 'block', flexShrink: 0 }} />
-                    <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--muted)' }}>{txt}</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {['Mo–Fr 12:00–17:00 Uhr', 'Königsberger Str. 2, 25479 Ellerau', '@fearless.tattoo auf Instagram'].map(t => (
+                  <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'var(--gold)', flexShrink: 0 }} />
+                    <span className="f-body" style={{ fontSize: '0.85rem', color: 'var(--muted)' }}>{t}</span>
                   </div>
                 ))}
               </div>
@@ -254,33 +237,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── INSTAGRAM ───────────────────────────────────────────── */}
-      <section style={{ background: 'var(--charcoal)' }}>
-        <div className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16 py-24">
+      {/* ═══════════════════════════════ INSTAGRAM ══════════════════ */}
+      <section style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 40px' }}>
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '20px', marginBottom: '36px' }}>
               <div>
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="line-bronze" />
-                  <span className="section-label">Instagram</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '12px' }}>
+                  <span className="gold-bar" />
+                  <span className="f-label">Instagram</span>
                 </div>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 4rem)', letterSpacing: '0.05em', color: '#f0ece4', lineHeight: 0.95 }}>
+                <h2 className="f-display" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', color: 'var(--white)' }}>
                   @FEARLESS.TATTOO
                 </h2>
               </div>
-              <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" data-hover className="btn-outline shrink-0">
-                Folgen →
-              </a>
+              <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ textDecoration: 'none' }}>Folgen →</a>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
-            {igGrid.map((src, i) => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '8px' }} className="max-sm:grid-cols-3">
+            {Array.from({ length: 6 }, (_, i) => (
               <ScrollReveal key={i} delay={i * 40}>
                 <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" data-hover>
-                  <div className="img-hover">
-                    <div className="relative overflow-hidden" style={{ aspectRatio: '1/1' }}>
-                      <Image src={src} alt={`Instagram ${i + 1}`} fill className="object-cover" />
+                  <div className="img-cell">
+                    <div style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden' }}>
+                      <Image src={`https://picsum.photos/seed/ig${i + 1}/400/400`} alt={`Instagram ${i + 1}`} fill style={{ objectFit: 'cover' }} />
                     </div>
                   </div>
                 </a>
@@ -290,16 +271,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── ZITAT ───────────────────────────────────────────────── */}
-      <section style={{ background: 'var(--bronze)', padding: '80px 0' }}>
-        <div className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16 text-center">
+      {/* ═══════════════════════════════ QUOTE ══════════════════════ */}
+      <section style={{ background: 'var(--gold)', padding: '72px 40px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', letterSpacing: '0.04em', color: 'var(--charcoal)', lineHeight: 1.2, maxWidth: '900px', margin: '0 auto' }}>
+            <blockquote className="f-display" style={{ fontSize: 'clamp(1.6rem, 4vw, 3rem)', color: 'var(--bg)', lineHeight: 1.2, maxWidth: '900px', margin: '0 auto 16px' }}>
               &ldquo;KUNST SOLLTE STÖREN. EIN TATTOO TUT ES — FÜR IMMER.&rdquo;
-            </p>
-            <p style={{ fontFamily: 'var(--font-heading)', fontSize: '0.7rem', letterSpacing: '0.3em', color: 'rgba(17,20,24,0.6)', marginTop: '16px', textTransform: 'uppercase' }}>
-              — Petzko, Fearless Inc
-            </p>
+            </blockquote>
+            <cite className="f-label" style={{ color: 'rgba(10,10,10,0.55)', fontStyle: 'normal' }}>— PETZKO, FEARLESS INC</cite>
           </ScrollReveal>
         </div>
       </section>

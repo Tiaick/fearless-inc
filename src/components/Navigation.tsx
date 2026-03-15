@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
-const navLinks = [
+const links = [
   { href: '/', label: 'Start' },
   { href: '/artist', label: 'Der Artist' },
   { href: '/galerie', label: 'Galerie' },
@@ -15,121 +15,134 @@ const navLinks = [
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const h = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', h);
+    return () => window.removeEventListener('scroll', h);
   }, []);
 
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => { setOpen(false); }, [pathname]);
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'nav-blur' : ''}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'nav-glass' : ''}`}
         style={{
-          background: scrolled ? 'rgba(17,20,24,0.92)' : 'transparent',
+          background: scrolled ? 'rgba(10,10,10,0.9)' : 'transparent',
           borderBottom: scrolled ? '1px solid rgba(201,168,76,0.1)' : 'none',
         }}
       >
-        <div className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16">
-          <div className="flex items-center justify-between h-[72px]">
-            {/* Logo */}
-            <Link href="/" data-hover>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.7rem', letterSpacing: '0.1em', color: '#f0ece4', lineHeight: 1 }}>
-                FEARLESS<span style={{ color: 'var(--bronze)' }}>.</span>
-              </div>
-              <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.5rem', letterSpacing: '0.4em', color: 'var(--muted)', marginTop: '2px' }}>
-                TATTOO BY PETZKO
-              </div>
-            </Link>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
+          {/* LOGO */}
+          <Link href="/" data-hover style={{ textDecoration: 'none' }}>
+            <div className="f-display" style={{ fontSize: '1.75rem', color: 'var(--white)', letterSpacing: '0.06em' }}>
+              FEARLESS<span style={{ color: 'var(--gold)' }}>.</span>
+            </div>
+            <div className="f-label" style={{ color: 'var(--muted)', marginTop: '1px', letterSpacing: '0.3em', fontSize: '0.5rem' }}>
+              TATTOO BY PETZKO
+            </div>
+          </Link>
 
-            {/* Desktop links */}
-            <ul className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    data-hover
-                    className="link-hover"
-                    style={{
-                      fontFamily: 'var(--font-heading)',
-                      fontSize: '0.7rem',
-                      fontWeight: 500,
-                      letterSpacing: '0.22em',
-                      textTransform: 'uppercase',
-                      color: pathname === link.href ? 'var(--bronze)' : 'var(--cream-dim)',
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA */}
-            <Link href="/buchen" data-hover className="hidden md:inline-flex btn-bronze">
-              Jetzt buchen
-            </Link>
-
-            {/* Mobile */}
-            <button
-              className="md:hidden"
-              style={{ color: 'var(--cream)', background: 'none', border: 'none' }}
-              onClick={() => setMenuOpen(!menuOpen)}
-              data-hover
-            >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile menu */}
-      <div
-        className="fixed inset-0 z-40 flex flex-col justify-center"
-        style={{
-          background: 'var(--charcoal)',
-          opacity: menuOpen ? 1 : 0,
-          pointerEvents: menuOpen ? 'auto' : 'none',
-          transition: 'opacity 0.5s ease',
-        }}
-      >
-        <div className="grain" />
-        <div className="absolute top-6 left-6 right-6 flex items-center justify-between">
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', letterSpacing: '0.1em', color: '#f0ece4' }}>
-            FEARLESS<span style={{ color: 'var(--bronze)' }}>.</span>
-          </div>
-          <button onClick={() => setMenuOpen(false)} style={{ color: 'var(--cream)', background: 'none', border: 'none' }} data-hover>
-            <X size={24} />
-          </button>
-        </div>
-
-        <div className="px-10">
-          <ul className="flex flex-col gap-2">
-            {navLinks.map((link, i) => (
-              <li key={link.href} style={{ opacity: menuOpen ? 1 : 0, transform: menuOpen ? 'none' : 'translateX(-20px)', transition: `all 0.5s ease ${i * 0.06}s` }}>
-                <Link href={link.href} data-hover style={{ fontFamily: 'var(--font-display)', fontSize: '3.5rem', letterSpacing: '0.06em', color: 'var(--cream)', display: 'block', lineHeight: 1.15, transition: 'color 0.3s ease' }}>
-                  {link.label}
+          {/* DESKTOP LINKS */}
+          <ul style={{ display: 'flex', alignItems: 'center', gap: '36px', listStyle: 'none', margin: 0, padding: 0 }} className="hidden md:flex">
+            {links.map(l => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  data-hover
+                  className="u-link"
+                  style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontWeight: 600,
+                    fontSize: '0.68rem',
+                    letterSpacing: '0.22em',
+                    textTransform: 'uppercase',
+                    color: pathname === l.href ? 'var(--gold)' : 'var(--dim)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {l.label}
                 </Link>
               </li>
             ))}
           </ul>
 
-          <div className="mt-10 pt-8" style={{ borderTop: '1px solid rgba(201,168,76,0.15)' }}>
-            <Link href="/buchen" className="btn-bronze">Termin buchen</Link>
-          </div>
+          {/* CTA */}
+          <Link href="/buchen" data-hover className="btn-gold hidden md:inline-flex" style={{ textDecoration: 'none' }}>
+            Jetzt buchen
+          </Link>
 
-          <div className="absolute bottom-10 left-10 right-10 flex items-center gap-6">
-            <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ fontFamily: 'var(--font-heading)', fontSize: '0.65rem', letterSpacing: '0.2em', color: 'var(--muted)', textTransform: 'uppercase' }}>
-              @fearless.tattoo
-            </a>
-            <span style={{ flex: 1, height: '1px', background: 'rgba(201,168,76,0.15)' }} />
-            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.6rem', letterSpacing: '0.2em', color: 'var(--muted)', textTransform: 'uppercase' }}>Ellerau</span>
+          {/* MOBILE TOGGLE */}
+          <button
+            onClick={() => setOpen(!open)}
+            data-hover
+            style={{ background: 'none', border: 'none', color: 'var(--white)', cursor: 'none', padding: '4px' }}
+            className="md:hidden"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* MOBILE OVERLAY */}
+      <div
+        style={{
+          position: 'fixed', inset: 0, zIndex: 40,
+          background: 'var(--bg)',
+          opacity: open ? 1 : 0,
+          pointerEvents: open ? 'auto' : 'none',
+          transition: 'opacity 0.4s ease',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          padding: '0 40px',
+        }}
+      >
+        {/* top bar */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+          <div className="f-display" style={{ fontSize: '1.5rem', color: 'var(--white)' }}>
+            FEARLESS<span style={{ color: 'var(--gold)' }}>.</span>
           </div>
+          <button onClick={() => setOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--white)', cursor: 'none' }} data-hover>
+            <X size={22} />
+          </button>
+        </div>
+
+        <nav>
+          {links.map((l, i) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              data-hover
+              style={{
+                display: 'block',
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2.8rem, 10vw, 5rem)',
+                letterSpacing: '0.04em',
+                color: pathname === l.href ? 'var(--gold)' : 'var(--white)',
+                textDecoration: 'none',
+                lineHeight: 1.15,
+                opacity: open ? 1 : 0,
+                transform: open ? 'translateX(0)' : 'translateX(-24px)',
+                transition: `opacity 0.45s ease ${i * 0.06}s, transform 0.45s ease ${i * 0.06}s, color 0.2s ease`,
+              }}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div style={{ position: 'absolute', bottom: '40px', left: '40px', right: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Link href="/buchen" className="btn-gold" style={{ textDecoration: 'none' }}>Termin buchen</Link>
+          <a
+            href="https://www.instagram.com/fearless.tattoo/"
+            target="_blank" rel="noopener noreferrer"
+            className="f-label u-link"
+            style={{ color: 'var(--muted)', textDecoration: 'none' }}
+          >
+            @fearless.tattoo
+          </a>
         </div>
       </div>
     </>
