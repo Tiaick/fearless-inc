@@ -93,7 +93,7 @@ export default function BuchenPage() {
                   Fülle das Formular aus — Petzko meldet sich innerhalb von 48 Stunden zurück.
                 </p>
                 {[
-                  { lbl: 'E-Mail', val: 'info@fearless-tattoo.at', href: 'mailto:info@fearless-tattoo.at' },
+                  { lbl: 'E-Mail', val: 'info@fearles.ink', href: 'mailto:info@fearles.ink' },
                   { lbl: 'Telefon', val: '01522 2458669', href: 'tel:015222458669' },
                   { lbl: 'Instagram', val: '@fearless.tattoo', href: 'https://www.instagram.com/fearless.tattoo/' },
                   { lbl: 'Adresse', val: 'Königsberger Str. 2, 25479 Ellerau', href: null },
@@ -181,6 +181,32 @@ export default function BuchenPage() {
               )}
             </ScrollReveal>
           </div>
+        </div>
+      </section>
+
+      {/* ─── CAL.COM EMBED ───────────────────────────────────────── */}
+      <section style={{ background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 40px' }}>
+          <ScrollReveal>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
+              <span className="gold-bar" />
+              <span className="f-label">Selbst buchen</span>
+            </div>
+            <h2 className="f-display" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: 'var(--white)', marginBottom: '48px' }}>
+              DIREKT BUCHEN
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal className="delay-1">
+            <div style={{ border: '1px solid var(--border)', overflow: 'hidden', background: 'var(--bg2)' }}>
+              <iframe
+                src="https://cal.com/fearless"
+                width="100%"
+                height="700"
+                style={{ border: 0, display: 'block', colorScheme: 'dark' }}
+                title="Termin buchen — Fearless Inc"
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

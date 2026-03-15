@@ -46,7 +46,7 @@ export default function Footer() {
             <div className="f-label" style={{ marginBottom: '16px' }}>Kontakt</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <a href="tel:015222458669" className="u-link f-body" style={{ fontSize: '0.85rem', color: 'var(--muted)', textDecoration: 'none' }}>01522 2458669</a>
-              <a href="mailto:info@fearless-tattoo.at" className="u-link f-body" style={{ fontSize: '0.85rem', color: 'var(--muted)', textDecoration: 'none' }}>info@fearless-tattoo.at</a>
+              <a href="mailto:info@fearles.ink" className="u-link f-body" style={{ fontSize: '0.85rem', color: 'var(--muted)', textDecoration: 'none' }}>info@fearles.ink</a>
               <p className="f-body" style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.5 }}>Königsberger Str. 2<br />25479 Ellerau</p>
             </div>
           </div>
