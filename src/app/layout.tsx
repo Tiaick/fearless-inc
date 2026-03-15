@@ -5,12 +5,12 @@ import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
-  title: "FEARLESS INC — Tattoo Art by Petzko",
-  description: "Premium tattoo artistry in Vienna. Petzko creates bespoke blackwork, realism, and fine line tattoos at Fearless Inc studio.",
-  keywords: ["tattoo", "tattoo studio", "Vienna", "Petzko", "Fearless Inc", "blackwork", "realism tattoo", "fine line"],
+  title: "FEARLESS INC — Tattoo Kunst von Petzko",
+  description: "Premium Tattoo Kunst in Ellerau. Petzko kreiert maßgeschneiderte Blackwork, Realism und Fine Line Tattoos im Fearless Inc Studio.",
+  keywords: ["tattoo", "tattoo studio", "Ellerau", "Petzko", "Fearless Inc", "blackwork", "realism tattoo", "fine line", "tätowierer"],
   openGraph: {
-    title: "FEARLESS INC — Tattoo Art by Petzko",
-    description: "Premium tattoo artistry in Vienna.",
+    title: "FEARLESS INC — Tattoo Kunst von Petzko",
+    description: "Premium Tattoo Kunst in Ellerau.",
     type: "website",
   },
 };

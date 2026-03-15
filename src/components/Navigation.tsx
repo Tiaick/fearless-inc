@@ -6,12 +6,11 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/artist', label: 'The Artist' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/booking', label: 'Booking' },
-  { href: '/studio', label: 'Studio' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'Start' },
+  { href: '/artist', label: 'Der Artist' },
+  { href: '/galerie', label: 'Galerie' },
+  { href: '/buchen', label: 'Buchen' },
+  { href: '/kontakt', label: 'Kontakt' },
 ];
 
 export default function Navigation() {
@@ -32,25 +31,17 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-          scrolled ? 'nav-blur border-b border-white/[0.04]' : ''
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'nav-blur border-b border-white/[0.04]' : ''}`}
         style={{ background: scrolled ? 'rgba(11,11,11,0.85)' : 'transparent' }}
       >
         <div className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="group flex flex-col leading-none" data-hover>
-              <span
-                className="text-[11px] tracking-[0.35em] uppercase"
-                style={{ color: '#c8a96a', fontFamily: 'var(--font-inter)', fontWeight: 300 }}
-              >
+              <span className="text-[11px] tracking-[0.35em] uppercase" style={{ color: '#c8a96a', fontFamily: 'var(--font-inter)', fontWeight: 300 }}>
                 Est. 2016
               </span>
-              <span
-                className="text-[1.4rem] font-light tracking-[0.15em] uppercase"
-                style={{ fontFamily: 'var(--font-cormorant)', color: '#f2f2f2', lineHeight: 1 }}
-              >
+              <span className="text-[1.4rem] font-light tracking-[0.15em] uppercase" style={{ fontFamily: 'var(--font-cormorant)', color: '#f2f2f2', lineHeight: 1 }}>
                 Fearless Inc
               </span>
             </Link>
@@ -63,11 +54,7 @@ export default function Navigation() {
                     href={link.href}
                     data-hover
                     className="luxury-underline text-[11px] tracking-[0.25em] uppercase transition-colors duration-300"
-                    style={{
-                      fontFamily: 'var(--font-inter)',
-                      fontWeight: 400,
-                      color: pathname === link.href ? '#c8a96a' : '#c0b8a8',
-                    }}
+                    style={{ fontFamily: 'var(--font-inter)', fontWeight: 400, color: pathname === link.href ? '#c8a96a' : '#c0b8a8' }}
                   >
                     {link.label}
                   </Link>
@@ -76,31 +63,17 @@ export default function Navigation() {
             </ul>
 
             {/* CTA */}
-            <Link
-              href="/booking"
-              data-hover
-              className="hidden md:flex items-center gap-3 group"
-            >
+            <Link href="/buchen" data-hover className="hidden md:flex items-center gap-3 group">
               <span
                 className="text-[10px] tracking-[0.3em] uppercase border px-5 py-2.5 transition-all duration-500 group-hover:border-[#c8a96a] group-hover:text-[#c8a96a]"
-                style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontWeight: 400,
-                  borderColor: 'rgba(192,184,168,0.3)',
-                  color: '#c0b8a8',
-                }}
+                style={{ fontFamily: 'var(--font-inter)', fontWeight: 400, borderColor: 'rgba(192,184,168,0.3)', color: '#c0b8a8' }}
               >
-                Book Now
+                Jetzt buchen
               </span>
             </Link>
 
-            {/* Mobile menu toggle */}
-            <button
-              className="md:hidden flex items-center justify-center w-10 h-10"
-              style={{ color: '#f2f2f2' }}
-              onClick={() => setMenuOpen(!menuOpen)}
-              data-hover
-            >
+            {/* Mobile toggle */}
+            <button className="md:hidden flex items-center justify-center w-10 h-10" style={{ color: '#f2f2f2' }} onClick={() => setMenuOpen(!menuOpen)} data-hover>
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
@@ -109,21 +82,13 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col justify-center transition-all duration-700 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-40 flex flex-col justify-center transition-all duration-700 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         style={{ background: '#0b0b0b' }}
       >
-        {/* Grain texture */}
         <div className="grain" />
-
         <div className="px-10">
-          {/* Logo top */}
           <div className="absolute top-7 left-10">
-            <span
-              className="text-[1.4rem] font-light tracking-[0.15em] uppercase"
-              style={{ fontFamily: 'var(--font-cormorant)', color: '#f2f2f2' }}
-            >
+            <span className="text-[1.4rem] font-light tracking-[0.15em] uppercase" style={{ fontFamily: 'var(--font-cormorant)', color: '#f2f2f2' }}>
               Fearless Inc
             </span>
           </div>
@@ -142,10 +107,7 @@ export default function Navigation() {
                   }}
                 >
                   <span className="num-indicator">{String(i + 1).padStart(2, '0')}</span>
-                  <span
-                    className="text-4xl font-light transition-colors duration-300 group-hover:text-[#c8a96a]"
-                    style={{ fontFamily: 'var(--font-cormorant)', color: '#f2f2f2', letterSpacing: '-0.01em' }}
-                  >
+                  <span className="text-4xl font-light transition-colors duration-300 group-hover:text-[#c8a96a]" style={{ fontFamily: 'var(--font-cormorant)', color: '#f2f2f2', letterSpacing: '-0.01em' }}>
                     {link.label}
                   </span>
                 </Link>
@@ -154,23 +116,13 @@ export default function Navigation() {
           </ul>
 
           <div className="mt-12 pt-8 border-t" style={{ borderColor: 'rgba(200,169,106,0.15)' }}>
-            <Link
-              href="/booking"
-              className="inline-flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase border px-6 py-3"
-              style={{ borderColor: 'rgba(200,169,106,0.4)', color: '#c8a96a', fontFamily: 'var(--font-inter)' }}
-            >
-              Book Appointment
+            <Link href="/buchen" className="inline-flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase border px-6 py-3" style={{ borderColor: 'rgba(200,169,106,0.4)', color: '#c8a96a', fontFamily: 'var(--font-inter)' }}>
+              Termin buchen
             </Link>
           </div>
 
           <div className="absolute bottom-10 left-10">
-            <a
-              href="https://www.instagram.com/fearless.tattoo/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[10px] tracking-[0.25em] uppercase transition-colors duration-300 hover:text-[#c8a96a]"
-              style={{ color: '#8a8270', fontFamily: 'var(--font-inter)' }}
-            >
+            <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" className="text-[10px] tracking-[0.25em] uppercase transition-colors duration-300 hover:text-[#c8a96a]" style={{ color: '#8a8270', fontFamily: 'var(--font-inter)' }}>
               @fearless.tattoo
             </a>
           </div>
