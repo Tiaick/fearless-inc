@@ -200,6 +200,9 @@ body {
 @media (max-width: 768px) { .masonry { columns: 2; } }
 @media (max-width: 480px) { .masonry { columns: 1; } }
 
+/* ─── GALLERY OVERLAY ────────────────────────────────────────────── */
+button:hover .img-overlay-info { opacity: 1 !important; }
+
 /* ─── NAV BLUR ───────────────────────────────────────────────────── */
 .nav-glass {
   backdrop-filter: blur(20px) saturate(140%);
