@@ -33,7 +33,7 @@ export default function ArtistPage() {
       <section style={{ position: 'relative', minHeight: '72vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <Image
-            src="/images/Petzko.png"
+            src="/images/petzko.png"
             alt="Petzko"
             fill priority
             style={{ objectFit: 'cover', objectPosition: 'center', filter: 'grayscale(0.5) brightness(0.22) contrast(1.1)' }}
@@ -67,7 +67,7 @@ export default function ArtistPage() {
                 <div className="img-cell">
                   <div style={{ position: 'relative', aspectRatio: '7/9', overflow: 'hidden' }}>
                     <Image
-                      src="/images/Petzko.png"
+                      src="/images/petzko.png"
                       alt="Petzko im Studio"
                       fill
                       style={{ objectFit: 'cover' }}
