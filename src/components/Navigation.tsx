@@ -35,7 +35,7 @@ export default function Navigation() {
           borderBottom: scrolled ? '1px solid rgba(201,168,76,0.1)' : 'none',
         }}
       >
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 clamp(20px, 5vw, 40px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
           {/* LOGO */}
           <Link href="/" data-hover style={{ textDecoration: 'none' }}>
             <div className="f-display" style={{ fontSize: '1.75rem', color: 'var(--white)', letterSpacing: '0.06em' }}>
@@ -47,7 +47,7 @@ export default function Navigation() {
           </Link>
 
           {/* DESKTOP LINKS */}
-          <ul style={{ display: 'flex', alignItems: 'center', gap: '36px', listStyle: 'none', margin: 0, padding: 0 }} className="hidden md:flex">
+          <ul style={{ alignItems: 'center', gap: '36px', listStyle: 'none', margin: 0, padding: 0 }} className="hidden md:flex">
             {links.map(l => (
               <li key={l.href}>
                 <Link
@@ -79,7 +79,7 @@ export default function Navigation() {
           <button
             onClick={() => setOpen(!open)}
             data-hover
-            style={{ background: 'none', border: 'none', color: 'var(--white)', cursor: 'none', padding: '4px' }}
+            style={{ background: 'none', border: 'none', color: 'var(--white)', cursor: 'pointer', padding: '4px' }}
             className="md:hidden"
           >
             {open ? <X size={22} /> : <Menu size={22} />}
@@ -104,7 +104,7 @@ export default function Navigation() {
           <div className="f-display" style={{ fontSize: '1.5rem', color: 'var(--white)' }}>
             FEARLESS<span style={{ color: 'var(--gold)' }}>.</span>
           </div>
-          <button onClick={() => setOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--white)', cursor: 'none' }} data-hover>
+          <button onClick={() => setOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--white)', cursor: 'pointer' }} data-hover>
             <X size={22} />
           </button>
         </div>

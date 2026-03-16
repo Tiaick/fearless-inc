@@ -291,6 +291,12 @@ button:hover .img-overlay-info { opacity: 1 !important; }
 .u-link:hover { color: var(--gold); }
 .u-link:hover::after { width: 100%; }
 
+/* ─── CURSOR: auf Touch-Geräten deaktivieren ─────────────────────── */
+@media (hover: none) {
+  .cursor-dot, .cursor-ring { display: none; }
+  .btn-gold, .btn-ghost, button, a { cursor: pointer !important; }
+}
+
 /* ─── GRAIN ──────────────────────────────────────────────────────── */
 body::after {
   content: ''; position: fixed; inset: -100%;
