@@ -33,7 +33,7 @@ export default function ArtistPage() {
       <section style={{ position: 'relative', minHeight: '72vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <Image
-            src="https://picsum.photos/seed/artist-hero/1920/1080"
+            src="/images/Petzko.png"
             alt="Petzko"
             fill priority
             style={{ objectFit: 'cover', objectPosition: 'center', filter: 'grayscale(0.5) brightness(0.22) contrast(1.1)' }}
@@ -67,7 +67,7 @@ export default function ArtistPage() {
                 <div className="img-cell">
                   <div style={{ position: 'relative', aspectRatio: '7/9', overflow: 'hidden' }}>
                     <Image
-                      src="https://picsum.photos/seed/petzko-studio/700/900"
+                      src="/images/Petzko.png"
                       alt="Petzko im Studio"
                       fill
                       style={{ objectFit: 'cover' }}

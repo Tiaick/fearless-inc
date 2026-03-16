@@ -87,7 +87,7 @@ export default function Home() {
               <div style={{ position: 'relative' }}>
                 <div className="img-cell">
                   <Image
-                    src="https://loremflickr.com/800/1000/tattoo,artist?lock=2"
+                    src="/images/Petzko.png"
                     alt="Petzko – Tattoo Artist"
                     width={800} height={1000} unoptimized
                     style={{ width: '100%', height: 'auto', display: 'block' }}
