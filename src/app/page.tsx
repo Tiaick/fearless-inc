@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import ScrollReveal from '@/components/ScrollReveal';
 
 const styles = [
@@ -255,24 +256,8 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <div className="r-grid-4col">
-            {realImages.map((src, i) => (
-              <ScrollReveal key={i} delay={i * 40}>
-                <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" data-hover>
-                  <div className="img-cell">
-                    <div style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden' }}>
-                      <Image
-                        src={src}
-                        alt={`Instagram ${i + 1}`}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                      />
-                    </div>
-                  </div>
-                </a>
-              </ScrollReveal>
-            ))}
-          </div>
+          <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+          <div className="elfsight-app-b494d01d-c5d8-4bec-b1b5-f95560a64a42" data-elfsight-app-lazy />
         </div>
       </section>
 
