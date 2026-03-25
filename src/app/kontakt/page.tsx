@@ -123,7 +123,7 @@ export default function KontaktPage() {
               {/* Öffnungszeiten */}
               <ScrollReveal>
                 <div style={{ paddingTop: '28px', paddingBottom: '28px', borderBottom: '1px solid var(--border)' }}>
-                  <div className="f-label" style={{ marginBottom: '16px' }}>Öffnungszeiten</div>
+                  <div className="f-label" style={{ marginBottom: '16px' }}>Sprechzeiten</div>
                   {zeiten.map(([tag, zeit]) => (
                     <div key={tag} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '8px' }}>
                       <span className="f-body" style={{ fontSize: '0.82rem', color: 'var(--dim)' }}>{tag}</span>

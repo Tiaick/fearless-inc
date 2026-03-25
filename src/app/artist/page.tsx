@@ -10,20 +10,19 @@ const philosophie = [
 ];
 
 const stile = [
-  { label: 'Blackwork', pct: 92 },
-  { label: 'Fine Line', pct: 88 },
-  { label: 'Geometric', pct: 84 },
-  { label: 'Realism', pct: 78 },
-  { label: 'Cover-Up', pct: 74 },
+  { label: 'Fine Line', pct: 92 },
+  { label: 'Geometric', pct: 88 },
+  { label: 'Realism', pct: 84 },
+  { label: 'Cover-Up', pct: 78 },
 ];
 
 const portfolio = [
-  'https://picsum.photos/seed/art1/700/900',
-  'https://picsum.photos/seed/art2/700/700',
-  'https://picsum.photos/seed/art3/700/500',
-  'https://picsum.photos/seed/art4/700/700',
-  'https://picsum.photos/seed/art5/700/900',
-  'https://picsum.photos/seed/art6/700/700',
+  '/images/tattoo-10.jpeg',
+  '/images/tattoo-18.jpeg',
+  '/images/tattoo-26.jpeg',
+  '/images/tattoo-12.jpeg',
+  '/images/tattoo-20.jpeg',
+  '/images/tattoo-28.jpeg',
 ];
 
 export default function ArtistPage() {
@@ -95,10 +94,10 @@ export default function ArtistPage() {
                     Petzko entdeckte das Tätowieren als Jugendlicher — nicht wegen des Handwerks selbst, sondern wegen dem, wofür es stand: die Kraft, etwas Permanentes zu schaffen. In einer Welt des Flüchtigen war hier eine Kunstform, die echtes Commitment fordert.
                   </p>
                   <p className="f-body" style={{ fontSize: '0.9rem', lineHeight: 1.85, color: 'var(--muted)' }}>
-                    Nach Jahren des autodidaktischen Studiums — Anatomie, Bildende Kunst, Architektur und Kalligraphie — begann er seine Lehre. Er wusste: Talent ist nur der Anfang. Disziplin und tausende Stunden Praxis sind das, was Meisterschaft ausmacht.
+                    Nach Jahren des autodidaktischen Studiums — Anatomie, Bildende Kunst, Architektur und Kalligraphie — begann er seine Kunst selbstständig zu perfektionieren. Er wusste: Talent ist nur der Anfang. Disziplin und tausende Stunden Praxis sind das, was Meisterschaft ausmacht.
                   </p>
                   <p className="f-body" style={{ fontSize: '0.9rem', lineHeight: 1.85, color: 'var(--muted)' }}>
-                    2016 gründete er Fearless Inc — ein Studio, das auf der Überzeugung basiert: Jeder Kunde verdient ein einzigartiges, sorgfältig gestaltetes Werk. Kein Flash, keine Vorlage. Nur Kunst.
+                    2020 gründete er Fearless Ink — ein Studio, das auf der Überzeugung basiert: Jeder Kunde verdient ein einzigartiges, sorgfältig gestaltetes Werk. Kein Flash, keine Vorlage. Nur Kunst.
                   </p>
                 </div>
               </ScrollReveal>

@@ -4,7 +4,6 @@ import Script from 'next/script';
 import ScrollReveal from '@/components/ScrollReveal';
 
 const styles = [
-  { title: 'Blackwork', desc: 'Fette schwarze Flächen, scharfe Linien und dunkle ornamentale Energie.' },
   { title: 'Realism', desc: 'Fotorealistische Portraits, Tiere und Szenen in atemberaubender Detailtreue.' },
   { title: 'Fine Line', desc: 'Zarte, präzise Linienarbeit. Botanik, Porträts und geometrische Elemente.' },
   { title: 'Geometric', desc: 'Mandalas, Sacred Geometry und ornamentale Muster mit mathematischer Perfektion.' },
@@ -12,14 +11,17 @@ const styles = [
   { title: 'Cover-Up', desc: 'Alte Tattoos neu denken und professionell überarbeiten. Kreativ, präzise, endgültig.' },
 ];
 
-const realImages = [
-  '/images/610187491_18087292439100682_8663289038902992315_n..jpg',
-  '/images/624116235_18089624426100682_2088412342259823505_n..jpg',
-  '/images/651812406_18093954797100682_8027518136352885077_n..jpg',
-  '/images/652836111_18094310735100682_5263157646568125049_n..jpg',
+const grid = [
+  { url: '/images/tattoo-01.jpeg', aspect: '3/4' },
+  { url: '/images/tattoo-02.jpeg', aspect: '1/1' },
+  { url: '/images/tattoo-03.jpeg', aspect: '4/5' },
+  { url: '/images/tattoo-04.jpeg', aspect: '1/1' },
+  { url: '/images/tattoo-05.jpeg', aspect: '3/4' },
+  { url: '/images/tattoo-06.jpeg', aspect: '1/1' },
+  { url: '/images/tattoo-07.jpeg', aspect: '4/5' },
+  { url: '/images/tattoo-08.jpeg', aspect: '1/1' },
+  { url: '/images/tattoo-09.jpeg', aspect: '3/4' },
 ];
-
-const grid = realImages.map((url) => ({ url, aspect: '1/1' }));
 
 export default function Home() {
   return (
@@ -28,9 +30,9 @@ export default function Home() {
       <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <Image
-            src="https://loremflickr.com/1920/1080/tattoo,studio?lock=1"
+            src="/images/tattoo-15.jpeg"
             alt="Fearless Inc"
-            fill priority unoptimized
+            fill priority
             style={{ objectFit: 'cover', objectPosition: 'center', filter: 'grayscale(0.4) brightness(0.28) contrast(1.15)' }}
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(10,10,10,0.97) 30%, rgba(10,10,10,0.55) 70%, rgba(10,10,10,0.2) 100%)' }} />
@@ -68,7 +70,7 @@ export default function Home() {
 
           <ScrollReveal className="delay-4">
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', paddingTop: '32px', borderTop: '1px solid rgba(201,168,76,0.12)' }}>
-              {[['8+', 'Jahre Erfahrung'], ['2.000+', 'Tattoos gestochen'], ['100%', 'Custom Designs']].map(([n, l]) => (
+              {[['6', 'Jahre Erfahrung'], ['2.000+', 'Tattoos gestochen'], ['100%', 'Custom Designs']].map(([n, l]) => (
                 <div key={l}>
                   <div className="f-display" style={{ fontSize: '2.8rem', color: 'var(--gold)', lineHeight: 1 }}>{n}</div>
                   <div className="f-label" style={{ color: 'var(--muted)', marginTop: '4px', fontSize: '0.58rem' }}>{l}</div>
@@ -89,12 +91,12 @@ export default function Home() {
                   <Image
                     src="/images/petzko.png"
                     alt="Petzko – Tattoo Artist"
-                    width={800} height={1000} unoptimized
+                    width={800} height={1000}
                     style={{ width: '100%', height: 'auto', display: 'block' }}
                   />
                 </div>
                 <div style={{ position: 'absolute', bottom: '-16px', right: '-16px', background: 'var(--gold)', padding: '20px 24px', textAlign: 'center' }}>
-                  <div className="f-display" style={{ fontSize: '2.5rem', color: 'var(--bg)', lineHeight: 1 }}>8+</div>
+                  <div className="f-display" style={{ fontSize: '2.5rem', color: 'var(--bg)', lineHeight: 1 }}>6</div>
                   <div className="f-label" style={{ color: 'rgba(10,10,10,0.65)', fontSize: '0.5rem' }}>Jahre</div>
                 </div>
               </div>
@@ -110,7 +112,7 @@ export default function Home() {
                   PETZKO
                 </h2>
                 <p className="f-body" style={{ fontSize: '1rem', lineHeight: 1.85, color: 'var(--dim)', marginBottom: '16px' }}>
-                  Petzko ist nicht einfach ein Tätowierer — er ist ein Künstler, der Haut als seine Leinwand sieht. Mit über acht Jahren Erfahrung und tausenden gestochenen Motiven hat er sein Handwerk auf ein Niveau perfektioniert, das für sich spricht.
+                  Petzko ist nicht einfach ein Tätowierer — er ist ein Künstler, der Haut als seine Leinwand sieht. Mit über sechs Jahren Erfahrung und tausenden gestochenen Motiven hat er sein Handwerk auf ein Niveau perfektioniert, das für sich spricht.
                 </p>
                 <p className="f-body" style={{ fontSize: '0.92rem', lineHeight: 1.85, color: 'var(--muted)', marginBottom: '36px' }}>
                   Sein Studio Fearless Inc in Ellerau ist ein privater kreativer Raum, in dem jede Vision Wirklichkeit wird. Keine Vorlagen, keine Kompromisse — nur Kunst.
@@ -184,7 +186,7 @@ export default function Home() {
                       <Image
                         src={item.url}
                         alt={`Tattoo Arbeit ${i + 1}`}
-                        fill unoptimized
+                        fill
                         style={{ objectFit: 'cover' }}
                       />
                     </div>
@@ -200,9 +202,9 @@ export default function Home() {
       <section style={{ position: 'relative', overflow: 'hidden', minHeight: '480px', display: 'flex', alignItems: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <Image
-            src="https://loremflickr.com/1920/800/tattoo,ink?lock=9"
+            src="/images/tattoo-22.jpeg"
             alt="Studio"
-            fill unoptimized
+            fill
             style={{ objectFit: 'cover', filter: 'grayscale(0.5) brightness(0.2) contrast(1.2)' }}
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(10,10,10,0.98) 40%, rgba(10,10,10,0.6) 100%)' }} />

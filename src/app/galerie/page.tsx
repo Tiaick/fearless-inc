@@ -6,27 +6,45 @@ import Link from 'next/link';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 
-type Kategorie = 'Alle' | 'Blackwork' | 'Realism' | 'Fine Line' | 'Geometric' | 'Custom';
+type Kategorie = 'Alle' | 'Realism' | 'Fine Line' | 'Geometric' | 'Custom';
 
 const galerieItems = [
-  { id: 1,  src: 'https://picsum.photos/seed/g1/600/800',  alt: 'Dunkler Sleeve Blackwork',   category: 'Blackwork', w: 600, h: 800 },
-  { id: 2,  src: 'https://picsum.photos/seed/g2/600/600',  alt: 'Realistisches Wolfsportrait', category: 'Realism',   w: 600, h: 600 },
-  { id: 3,  src: 'https://picsum.photos/seed/g3/600/900',  alt: 'Fine Line Botanik',           category: 'Fine Line', w: 600, h: 900 },
-  { id: 4,  src: 'https://picsum.photos/seed/g4/600/600',  alt: 'Geometrisches Mandala',       category: 'Geometric', w: 600, h: 600 },
-  { id: 5,  src: 'https://picsum.photos/seed/g5/600/700',  alt: 'Custom dunkle Blumen',        category: 'Custom',    w: 600, h: 700 },
-  { id: 6,  src: 'https://picsum.photos/seed/g6/600/600',  alt: 'Blackwork Brust',             category: 'Blackwork', w: 600, h: 600 },
-  { id: 7,  src: 'https://picsum.photos/seed/g7/600/800',  alt: 'Realism Tiger',               category: 'Realism',   w: 600, h: 800 },
-  { id: 8,  src: 'https://picsum.photos/seed/g8/600/600',  alt: 'Fine Line Portrait',          category: 'Fine Line', w: 600, h: 600 },
-  { id: 9,  src: 'https://picsum.photos/seed/g9/600/600',  alt: 'Heilige Geometrie',           category: 'Geometric', w: 600, h: 600 },
-  { id: 10, src: 'https://picsum.photos/seed/g10/600/900', alt: 'Custom Schlange',             category: 'Custom',    w: 600, h: 900 },
-  { id: 11, src: 'https://picsum.photos/seed/g11/600/600', alt: 'Abstraktes Blackwork',        category: 'Blackwork', w: 600, h: 600 },
-  { id: 12, src: 'https://picsum.photos/seed/g12/600/700', alt: 'Realism Hand',                category: 'Realism',   w: 600, h: 700 },
-  { id: 13, src: 'https://picsum.photos/seed/g13/600/600', alt: 'Fine Line Mond',              category: 'Fine Line', w: 600, h: 600 },
-  { id: 14, src: 'https://picsum.photos/seed/g14/600/800', alt: 'Ornamentale Geometrie',       category: 'Geometric', w: 600, h: 800 },
-  { id: 15, src: 'https://picsum.photos/seed/g15/600/600', alt: 'Custom Koi',                  category: 'Custom',    w: 600, h: 600 },
+  { id:  1, src: '/images/tattoo-01.jpeg', alt: 'Tattoo Fine Line',      category: 'Fine Line', w: 600, h: 800 },
+  { id:  2, src: '/images/tattoo-02.jpeg', alt: 'Tattoo Fine Line',      category: 'Fine Line', w: 600, h: 600 },
+  { id:  3, src: '/images/tattoo-03.jpeg', alt: 'Tattoo Fine Line',      category: 'Fine Line', w: 600, h: 750 },
+  { id:  4, src: '/images/tattoo-04.jpeg', alt: 'Tattoo Fine Line',      category: 'Fine Line', w: 600, h: 600 },
+  { id:  5, src: '/images/tattoo-05.jpeg', alt: 'Tattoo Fine Line',      category: 'Fine Line', w: 600, h: 800 },
+  { id:  6, src: '/images/tattoo-06.jpeg', alt: 'Tattoo Fine Line',      category: 'Fine Line', w: 600, h: 600 },
+  { id:  7, src: '/images/tattoo-07.jpeg', alt: 'Tattoo Fine Line',      category: 'Fine Line', w: 600, h: 750 },
+  { id:  8, src: '/images/tattoo-08.jpeg', alt: 'Tattoo Fine Line',      category: 'Fine Line', w: 600, h: 600 },
+  { id:  9, src: '/images/tattoo-09.jpeg', alt: 'Tattoo Geometric',      category: 'Geometric', w: 600, h: 800 },
+  { id: 10, src: '/images/tattoo-10.jpeg', alt: 'Tattoo Geometric',      category: 'Geometric', w: 600, h: 600 },
+  { id: 11, src: '/images/tattoo-11.jpeg', alt: 'Tattoo Geometric',      category: 'Geometric', w: 600, h: 750 },
+  { id: 12, src: '/images/tattoo-12.jpeg', alt: 'Tattoo Geometric',      category: 'Geometric', w: 600, h: 600 },
+  { id: 13, src: '/images/tattoo-13.jpeg', alt: 'Tattoo Geometric',      category: 'Geometric', w: 600, h: 800 },
+  { id: 14, src: '/images/tattoo-14.jpeg', alt: 'Tattoo Geometric',      category: 'Geometric', w: 600, h: 600 },
+  { id: 15, src: '/images/tattoo-15.jpeg', alt: 'Tattoo Geometric',      category: 'Geometric', w: 600, h: 750 },
+  { id: 16, src: '/images/tattoo-16.jpeg', alt: 'Tattoo Geometric',      category: 'Geometric', w: 600, h: 600 },
+  { id: 17, src: '/images/tattoo-17.jpeg', alt: 'Tattoo Realism',        category: 'Realism',   w: 600, h: 800 },
+  { id: 18, src: '/images/tattoo-18.jpeg', alt: 'Tattoo Realism',        category: 'Realism',   w: 600, h: 600 },
+  { id: 19, src: '/images/tattoo-19.jpeg', alt: 'Tattoo Realism',        category: 'Realism',   w: 600, h: 750 },
+  { id: 20, src: '/images/tattoo-20.jpeg', alt: 'Tattoo Realism',        category: 'Realism',   w: 600, h: 600 },
+  { id: 21, src: '/images/tattoo-21.jpeg', alt: 'Tattoo Realism',        category: 'Realism',   w: 600, h: 800 },
+  { id: 22, src: '/images/tattoo-22.jpeg', alt: 'Tattoo Realism',        category: 'Realism',   w: 600, h: 600 },
+  { id: 23, src: '/images/tattoo-23.jpeg', alt: 'Tattoo Realism',        category: 'Realism',   w: 600, h: 750 },
+  { id: 24, src: '/images/tattoo-24.jpeg', alt: 'Tattoo Realism',        category: 'Realism',   w: 600, h: 600 },
+  { id: 25, src: '/images/tattoo-25.jpeg', alt: 'Tattoo Realism',        category: 'Realism',   w: 600, h: 800 },
+  { id: 26, src: '/images/tattoo-26.jpeg', alt: 'Tattoo Custom',         category: 'Custom',    w: 600, h: 600 },
+  { id: 27, src: '/images/tattoo-27.jpeg', alt: 'Tattoo Custom',         category: 'Custom',    w: 600, h: 750 },
+  { id: 28, src: '/images/tattoo-28.jpeg', alt: 'Tattoo Custom',         category: 'Custom',    w: 600, h: 600 },
+  { id: 29, src: '/images/tattoo-29.jpeg', alt: 'Tattoo Custom',         category: 'Custom',    w: 600, h: 800 },
+  { id: 30, src: '/images/tattoo-30.jpeg', alt: 'Tattoo Custom',         category: 'Custom',    w: 600, h: 600 },
+  { id: 31, src: '/images/tattoo-31.jpeg', alt: 'Tattoo Custom',         category: 'Custom',    w: 600, h: 750 },
+  { id: 32, src: '/images/tattoo-32.jpeg', alt: 'Tattoo Custom',         category: 'Custom',    w: 600, h: 600 },
+  { id: 33, src: '/images/tattoo-33.jpeg', alt: 'Tattoo Custom',         category: 'Custom',    w: 600, h: 800 },
 ];
 
-const kategorien: Kategorie[] = ['Alle', 'Blackwork', 'Realism', 'Fine Line', 'Geometric', 'Custom'];
+const kategorien: Kategorie[] = ['Alle', 'Realism', 'Fine Line', 'Geometric', 'Custom'];
 
 export default function GaleriePage() {
   const [aktiveKategorie, setAktiveKategorie] = useState<Kategorie>('Alle');
