@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
-import { client, urlFor } from '@/lib/sanity';
+import { getArtist, getTattooStile, getGalerieBilder, getMediaUrl } from '@/lib/payload';
 
 const FALLBACK_STILE = [
   { titel: 'Realism', beschreibung: 'Fotorealistische Portraits, Tiere und Szenen in atemberaubender Detailtreue.' },
@@ -33,31 +33,26 @@ const FALLBACK_ARTIST = {
 };
 
 async function getData() {
-  try {
-    const [stileRaw, gridRaw, artistRaw] = await Promise.all([
-      client.fetch(`*[_type == "tattooStil"] | order(reihenfolge asc) { titel, beschreibung }`),
-      client.fetch(`*[_type == "galerieBild"] | order(reihenfolge asc)[0...9] { image, alt }`),
-      client.fetch(`*[_type == "artist"][0] { name, jahreErfahrung, tattooCount, kurztext, langtext, zitat, foto }`),
-    ]);
+  const [stileRaw, gridRaw, artistRaw] = await Promise.all([
+    getTattooStile(),
+    getGalerieBilder(),
+    getArtist(),
+  ]);
 
-    const stile = stileRaw?.length > 0 ? stileRaw : FALLBACK_STILE;
+  const stile = stileRaw?.length > 0 ? stileRaw : FALLBACK_STILE;
 
-    const grid = gridRaw?.length > 0
-      ? gridRaw.map((item: { image: object; alt: string }) => ({ src: urlFor(item.image).width(600).url(), alt: item.alt }))
-      : FALLBACK_GRID.map(src => ({ src, alt: 'Tattoo Arbeit' }));
+  const grid = gridRaw?.length > 0
+    ? gridRaw.slice(0, 9).map((item: { image: { url?: string }; alt: string }) => ({
+        src: getMediaUrl(item.image) ?? '',
+        alt: item.alt,
+      })).filter((i: { src: string }) => i.src)
+    : FALLBACK_GRID.map(src => ({ src, alt: 'Tattoo Arbeit' }));
 
-    const artist = artistRaw
-      ? { ...FALLBACK_ARTIST, ...artistRaw, fotoSrc: artistRaw.foto ? urlFor(artistRaw.foto).width(800).url() : FALLBACK_ARTIST.fotoSrc }
-      : FALLBACK_ARTIST;
+  const artist = artistRaw
+    ? { ...FALLBACK_ARTIST, ...artistRaw, fotoSrc: getMediaUrl(artistRaw.foto) ?? FALLBACK_ARTIST.fotoSrc }
+    : FALLBACK_ARTIST;
 
-    return { stile, grid, artist };
-  } catch {
-    return {
-      stile: FALLBACK_STILE,
-      grid: FALLBACK_GRID.map(src => ({ src, alt: 'Tattoo Arbeit' })),
-      artist: FALLBACK_ARTIST,
-    };
-  }
+  return { stile, grid, artist };
 }
 
 export default async function Home() {

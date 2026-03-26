@@ -1,4 +1,4 @@
-import { client, urlFor } from '@/lib/sanity';
+import { getGalerieBilder, getMediaUrl } from '@/lib/payload';
 import GalerieClient, { GalerieItem } from './GalerieClient';
 
 const FALLBACK_ITEMS: GalerieItem[] = [
@@ -38,29 +38,16 @@ const FALLBACK_ITEMS: GalerieItem[] = [
 ];
 
 async function getGalerieItems(): Promise<GalerieItem[]> {
-  try {
-    const data = await client.fetch(`
-      *[_type == "galerieBild"] | order(reihenfolge asc) {
-        _id,
-        image,
-        "w": image.asset->metadata.dimensions.width,
-        "h": image.asset->metadata.dimensions.height,
-        alt,
-        category
-      }
-    `);
-    if (!data || data.length === 0) return FALLBACK_ITEMS;
-    return data.map((item: { _id: string; image: object; alt: string; category: string; w: number; h: number }) => ({
-      id: item._id,
-      src: urlFor(item.image).width(900).url(),
-      alt: item.alt,
-      category: item.category,
-      w: item.w || 600,
-      h: item.h || 800,
-    }));
-  } catch {
-    return FALLBACK_ITEMS;
-  }
+  const data = await getGalerieBilder();
+  if (!data || data.length === 0) return FALLBACK_ITEMS;
+  return data.map((item: { id: string; image: { url?: string; width?: number; height?: number }; alt: string; category: string }) => ({
+    id: item.id,
+    src: getMediaUrl(item.image) ?? '',
+    alt: item.alt,
+    category: item.category,
+    w: item.image?.width || 600,
+    h: item.image?.height || 800,
+  })).filter((i: GalerieItem) => i.src);
 }
 
 export default async function GaleriePage() {
