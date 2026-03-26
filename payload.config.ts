@@ -29,6 +29,7 @@ export default buildConfig({
     client: {
       url: `file:${path.resolve(dirname, '.data/payload.db')}`,
     },
+    push: true,
   }),
   upload: {
     limits: {
