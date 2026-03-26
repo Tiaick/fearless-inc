@@ -4,6 +4,7 @@ import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+import { Users } from './src/collections/Users'
 import { Media } from './src/collections/Media'
 import { GalerieBilder } from './src/collections/GalerieBilder'
 import { Artists } from './src/collections/Artists'
@@ -17,7 +18,7 @@ export default buildConfig({
   admin: {
     user: 'users',
   },
-  collections: [Media, GalerieBilder, Artists, TattooStile],
+  collections: [Users, Media, GalerieBilder, Artists, TattooStile],
   globals: [Settings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'fallback-secret-change-in-production',
