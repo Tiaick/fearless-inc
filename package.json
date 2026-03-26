@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^14.2.15",
-    "@payloadcms/db-sqlite": "^3.80.0",
+    "@payloadcms/db-postgres": "^3.80.0",
     "@payloadcms/next": "^3.80.0",
     "@payloadcms/richtext-lexical": "^3.80.0",
     "framer-motion": "^12.36.0",
