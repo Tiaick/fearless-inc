@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "payload migrate:create --name=init || true",
-    "start": "payload migrate && next start",
+    "start": "NODE_OPTIONS='--import tsx/esm' payload migrate:create --name=init || true && NODE_OPTIONS='--import tsx/esm' payload migrate && next start",
     "lint": "eslint"
   },
   "dependencies": {
