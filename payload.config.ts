@@ -27,9 +27,9 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: process.env.DATABASE_URL || 'postgresql://localhost/unused',
     },
-    push: true,
+    migrationDir: path.resolve(dirname, 'src/migrations'),
   }),
   upload: {
     limits: {
