@@ -4,8 +4,8 @@ import { join } from 'path'
 export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
     // Register tsx so Node.js can dynamically import .ts migration files
-    const { register: registerLoader } = await import('node:module')
-    registerLoader('tsx/esm', import.meta.url)
+    const { register } = await import('tsx/esm/api')
+    register()
 
     // Ensure migrations directory exists
     mkdirSync(join(process.cwd(), 'src/migrations'), { recursive: true })
