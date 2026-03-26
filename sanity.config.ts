@@ -9,6 +9,7 @@ import { tattooStil } from './src/sanity/schemaTypes/tattooStil'
 export default defineConfig({
   name: 'fearless-tattoo',
   title: 'Fearless Tattoo',
+  basePath: '/studio',
   projectId: 'z7o9aecg',
   dataset: 'production',
   plugins: [structureTool(), visionTool()],
