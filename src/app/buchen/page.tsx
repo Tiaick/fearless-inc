@@ -203,7 +203,7 @@ export default function BuchenPage() {
                 width="100%"
                 height="700"
                 style={{ border: 0, display: 'block', colorScheme: 'dark' }}
-                title="Termin buchen — Fearless Inc"
+                title="Termin buchen — Fearless Ink"
               />
             </div>
           </ScrollReveal>

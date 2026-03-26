@@ -223,11 +223,11 @@ export default function KontaktPage() {
               style={{ border: 0, filter: 'grayscale(1) invert(0.88) contrast(0.9) brightness(0.38) sepia(0.2)' }}
               allowFullScreen loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Fearless Inc Standort"
+              title="Fearless Ink Standort"
             />
             {/* Overlay label */}
             <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px 28px', background: 'linear-gradient(to top, rgba(10,10,10,0.95), transparent)', pointerEvents: 'none' }}>
-              <div className="f-label" style={{ marginBottom: '4px' }}>Fearless Inc</div>
+              <div className="f-label" style={{ marginBottom: '4px' }}>Fearless Ink</div>
               <p className="f-body" style={{ fontSize: '0.9rem', color: 'var(--white)' }}>Königsberger Str. 2, 25479 Ellerau</p>
             </div>
             {/* Maps link */}

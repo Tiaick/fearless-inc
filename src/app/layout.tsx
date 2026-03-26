@@ -28,8 +28,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "FEARLESS INC — Tattoo Kunst von Petzko",
-  description: "Premium Tattoo Kunst in Ellerau. Petzko kreiert maßgeschneiderte Blackwork, Realism und Fine Line Tattoos im Fearless Inc Studio.",
-  keywords: ["tattoo", "tattoo studio", "Ellerau", "Petzko", "Fearless Inc", "blackwork", "realism tattoo", "fine line"],
+  description: "Premium Tattoo Kunst in Ellerau. Petzko kreiert maßgeschneiderte Blackwork, Realism und Fine Line Tattoos im Fearless Ink Studio.",
+  keywords: ["tattoo", "tattoo studio", "Ellerau", "Petzko", "Fearless Ink", "blackwork", "realism tattoo", "fine line"],
   openGraph: {
     title: "FEARLESS INC — Tattoo Kunst von Petzko",
     description: "Premium Tattoo Kunst in Ellerau.",

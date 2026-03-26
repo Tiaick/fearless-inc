@@ -73,7 +73,7 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ paddingTop: '24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
           <p className="f-body" style={{ fontSize: '0.75rem', color: 'var(--muted)', opacity: 0.5 }}>
-            © {new Date().getFullYear()} Fearless Inc. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} Fearless Ink. Alle Rechte vorbehalten.
           </p>
           <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" className="u-link f-label" style={{ color: 'var(--muted)', textDecoration: 'none', opacity: 0.5 }}>
             @fearless.tattoo

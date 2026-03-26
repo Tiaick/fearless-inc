@@ -123,6 +123,21 @@ body {
 }
 .img-cell:hover::after { border-color: var(--gold); }
 
+/* ─── INSTAGRAM GRID ─────────────────────────────────────────────── */
+.insta-cell { cursor: pointer; }
+.insta-cell:hover img { transform: scale(1.06); filter: grayscale(0) brightness(1.05) !important; }
+.insta-overlay {
+  position: absolute; inset: 0;
+  background: rgba(10,10,10,0.45);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.insta-cell:hover .insta-overlay { opacity: 1; }
+@media (max-width: 768px) {
+  .insta-grid-6 { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
 /* ─── BUTTONS ────────────────────────────────────────────────────── */
 .btn-gold {
   display: inline-flex; align-items: center; gap: 10px;

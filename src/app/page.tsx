@@ -1,29 +1,68 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
 import ScrollReveal from '@/components/ScrollReveal';
+import { client, urlFor } from '@/lib/sanity';
 
-const styles = [
-  { title: 'Realism', desc: 'Fotorealistische Portraits, Tiere und Szenen in atemberaubender Detailtreue.' },
-  { title: 'Fine Line', desc: 'Zarte, präzise Linienarbeit. Botanik, Porträts und geometrische Elemente.' },
-  { title: 'Geometric', desc: 'Mandalas, Sacred Geometry und ornamentale Muster mit mathematischer Perfektion.' },
-  { title: 'Custom', desc: 'Deine Idee, von Grund auf neu designed. Kein Template — pure, einzigartige Kunst.' },
-  { title: 'Cover-Up', desc: 'Alte Tattoos neu denken und professionell überarbeiten. Kreativ, präzise, endgültig.' },
+const FALLBACK_STILE = [
+  { titel: 'Realism', beschreibung: 'Fotorealistische Portraits, Tiere und Szenen in atemberaubender Detailtreue.' },
+  { titel: 'Fine Line', beschreibung: 'Zarte, präzise Linienarbeit. Botanik, Porträts und geometrische Elemente.' },
+  { titel: 'Geometric', beschreibung: 'Mandalas, Sacred Geometry und ornamentale Muster mit mathematischer Perfektion.' },
+  { titel: 'Custom', beschreibung: 'Deine Idee, von Grund auf neu designed. Kein Template — pure, einzigartige Kunst.' },
+  { titel: 'Cover-Up', beschreibung: 'Alte Tattoos neu denken und professionell überarbeiten. Kreativ, präzise, endgültig.' },
 ];
 
-const grid = [
-  { url: '/images/tattoo-01.jpeg', aspect: '3/4' },
-  { url: '/images/tattoo-02.jpeg', aspect: '1/1' },
-  { url: '/images/tattoo-03.jpeg', aspect: '4/5' },
-  { url: '/images/tattoo-04.jpeg', aspect: '1/1' },
-  { url: '/images/tattoo-05.jpeg', aspect: '3/4' },
-  { url: '/images/tattoo-06.jpeg', aspect: '1/1' },
-  { url: '/images/tattoo-07.jpeg', aspect: '4/5' },
-  { url: '/images/tattoo-08.jpeg', aspect: '1/1' },
-  { url: '/images/tattoo-09.jpeg', aspect: '3/4' },
+const FALLBACK_GRID = [
+  '/images/tattoo-01.jpeg', '/images/tattoo-02.jpeg', '/images/tattoo-03.jpeg',
+  '/images/tattoo-04.jpeg', '/images/tattoo-05.jpeg', '/images/tattoo-06.jpeg',
+  '/images/tattoo-07.jpeg', '/images/tattoo-08.jpeg', '/images/tattoo-09.jpeg',
 ];
 
-export default function Home() {
+const FALLBACK_INSTA_GRID = [
+  '/images/tattoo-10.jpeg', '/images/tattoo-11.jpeg', '/images/tattoo-12.jpeg',
+  '/images/tattoo-13.jpeg', '/images/tattoo-14.jpeg', '/images/tattoo-16.jpeg',
+];
+
+const FALLBACK_ARTIST = {
+  name: 'PETZKO',
+  jahreErfahrung: 6,
+  tattooCount: '2.000+',
+  kurztext: 'Petzko ist nicht einfach ein Tätowierer — er ist ein Künstler, der Haut als seine Leinwand sieht. Mit über sechs Jahren Erfahrung und tausenden gestochenen Motiven hat er sein Handwerk auf ein Niveau perfektioniert, das für sich spricht.',
+  langtext: 'Sein Studio Fearless Ink in Ellerau ist ein privater kreativer Raum, in dem jede Vision Wirklichkeit wird. Keine Vorlagen, keine Kompromisse — nur Kunst.',
+  zitat: 'KUNST SOLLTE STÖREN. EIN TATTOO TUT ES — FÜR IMMER.',
+  fotoSrc: '/images/petzko.png',
+};
+
+async function getData() {
+  try {
+    const [stileRaw, gridRaw, artistRaw] = await Promise.all([
+      client.fetch(`*[_type == "tattooStil"] | order(reihenfolge asc) { titel, beschreibung }`),
+      client.fetch(`*[_type == "galerieBild"] | order(reihenfolge asc)[0...9] { image, alt }`),
+      client.fetch(`*[_type == "artist"][0] { name, jahreErfahrung, tattooCount, kurztext, langtext, zitat, foto }`),
+    ]);
+
+    const stile = stileRaw?.length > 0 ? stileRaw : FALLBACK_STILE;
+
+    const grid = gridRaw?.length > 0
+      ? gridRaw.map((item: { image: object; alt: string }) => ({ src: urlFor(item.image).width(600).url(), alt: item.alt }))
+      : FALLBACK_GRID.map(src => ({ src, alt: 'Tattoo Arbeit' }));
+
+    const artist = artistRaw
+      ? { ...FALLBACK_ARTIST, ...artistRaw, fotoSrc: artistRaw.foto ? urlFor(artistRaw.foto).width(800).url() : FALLBACK_ARTIST.fotoSrc }
+      : FALLBACK_ARTIST;
+
+    return { stile, grid, artist };
+  } catch {
+    return {
+      stile: FALLBACK_STILE,
+      grid: FALLBACK_GRID.map(src => ({ src, alt: 'Tattoo Arbeit' })),
+      artist: FALLBACK_ARTIST,
+    };
+  }
+}
+
+export default async function Home() {
+  const { stile, grid, artist } = await getData();
+
   return (
     <>
       {/* ═══════════════════════════════ HERO ═══════════════════════ */}
@@ -31,7 +70,7 @@ export default function Home() {
         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <Image
             src="/images/tattoo-15.jpeg"
-            alt="Fearless Inc"
+            alt="Fearless Ink"
             fill priority
             style={{ objectFit: 'cover', objectPosition: 'center', filter: 'grayscale(0.4) brightness(0.28) contrast(1.15)' }}
           />
@@ -51,7 +90,7 @@ export default function Home() {
               FEARLESS
             </h1>
             <h1 className="f-display" style={{ fontSize: 'clamp(5.5rem, 14vw, 13rem)', color: 'transparent', WebkitTextStroke: '1.5px var(--gold)', marginBottom: '32px' }}>
-              INC.
+              INK.
             </h1>
           </ScrollReveal>
 
@@ -70,7 +109,7 @@ export default function Home() {
 
           <ScrollReveal className="delay-4">
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', paddingTop: '32px', borderTop: '1px solid rgba(201,168,76,0.12)' }}>
-              {[['6', 'Jahre Erfahrung'], ['2.000+', 'Tattoos gestochen'], ['100%', 'Custom Designs']].map(([n, l]) => (
+              {[[String(artist.jahreErfahrung), 'Jahre Erfahrung'], [artist.tattooCount, 'Tattoos gestochen'], ['100%', 'Custom Designs']].map(([n, l]) => (
                 <div key={l}>
                   <div className="f-display" style={{ fontSize: '2.8rem', color: 'var(--gold)', lineHeight: 1 }}>{n}</div>
                   <div className="f-label" style={{ color: 'var(--muted)', marginTop: '4px', fontSize: '0.58rem' }}>{l}</div>
@@ -89,14 +128,14 @@ export default function Home() {
               <div style={{ position: 'relative' }}>
                 <div className="img-cell">
                   <Image
-                    src="/images/petzko.png"
-                    alt="Petzko – Tattoo Artist"
+                    src={artist.fotoSrc}
+                    alt={`${artist.name} – Tattoo Artist`}
                     width={800} height={1000}
                     style={{ width: '100%', height: 'auto', display: 'block' }}
                   />
                 </div>
                 <div style={{ position: 'absolute', bottom: '-16px', right: '-16px', background: 'var(--gold)', padding: '20px 24px', textAlign: 'center' }}>
-                  <div className="f-display" style={{ fontSize: '2.5rem', color: 'var(--bg)', lineHeight: 1 }}>6</div>
+                  <div className="f-display" style={{ fontSize: '2.5rem', color: 'var(--bg)', lineHeight: 1 }}>{artist.jahreErfahrung}</div>
                   <div className="f-label" style={{ color: 'rgba(10,10,10,0.65)', fontSize: '0.5rem' }}>Jahre</div>
                 </div>
               </div>
@@ -109,13 +148,13 @@ export default function Home() {
                   <span className="f-label">Der Artist</span>
                 </div>
                 <h2 className="f-display" style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', color: 'var(--white)', marginBottom: '24px' }}>
-                  PETZKO
+                  {artist.name}
                 </h2>
                 <p className="f-body" style={{ fontSize: '1rem', lineHeight: 1.85, color: 'var(--dim)', marginBottom: '16px' }}>
-                  Petzko ist nicht einfach ein Tätowierer — er ist ein Künstler, der Haut als seine Leinwand sieht. Mit über sechs Jahren Erfahrung und tausenden gestochenen Motiven hat er sein Handwerk auf ein Niveau perfektioniert, das für sich spricht.
+                  {artist.kurztext}
                 </p>
                 <p className="f-body" style={{ fontSize: '0.92rem', lineHeight: 1.85, color: 'var(--muted)', marginBottom: '36px' }}>
-                  Sein Studio Fearless Inc in Ellerau ist ein privater kreativer Raum, in dem jede Vision Wirklichkeit wird. Keine Vorlagen, keine Kompromisse — nur Kunst.
+                  {artist.langtext}
                 </p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
                   <Link href="/artist" data-hover className="btn-gold" style={{ textDecoration: 'none' }}>Mehr über Petzko</Link>
@@ -144,14 +183,14 @@ export default function Home() {
           </ScrollReveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
-            {styles.map((s, i) => (
-              <ScrollReveal key={s.title} delay={i * 50}>
+            {stile.map((s: { titel: string; beschreibung: string }, i: number) => (
+              <ScrollReveal key={s.titel} delay={i * 50}>
                 <div className="card">
                   <div className="f-display" style={{ fontSize: '3rem', color: 'rgba(201,168,76,0.15)', lineHeight: 1, marginBottom: '16px' }}>
                     {String(i + 1).padStart(2, '0')}
                   </div>
-                  <h3 className="f-display" style={{ fontSize: '1.75rem', color: 'var(--white)', marginBottom: '12px' }}>{s.title}</h3>
-                  <p className="f-body" style={{ fontSize: '0.85rem', lineHeight: 1.75, color: 'var(--muted)' }}>{s.desc}</p>
+                  <h3 className="f-display" style={{ fontSize: '1.75rem', color: 'var(--white)', marginBottom: '12px' }}>{s.titel}</h3>
+                  <p className="f-body" style={{ fontSize: '0.85rem', lineHeight: 1.75, color: 'var(--muted)' }}>{s.beschreibung}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -178,14 +217,14 @@ export default function Home() {
           </ScrollReveal>
 
           <div className="r-grid-3col">
-            {grid.map((item, i) => (
+            {grid.map((item: { src: string; alt: string }, i: number) => (
               <ScrollReveal key={i} delay={i * 45}>
                 <Link href="/galerie" data-hover style={{ textDecoration: 'none', display: 'block' }}>
                   <div className="img-cell">
-                    <div style={{ position: 'relative', aspectRatio: item.aspect, overflow: 'hidden' }}>
+                    <div style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden' }}>
                       <Image
-                        src={item.url}
-                        alt={`Tattoo Arbeit ${i + 1}`}
+                        src={item.src}
+                        alt={item.alt}
                         fill
                         style={{ objectFit: 'cover' }}
                       />
@@ -254,12 +293,47 @@ export default function Home() {
                   @FEARLESS.TATTOO
                 </h2>
               </div>
-              <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ textDecoration: 'none' }}>Folgen →</a>
+              <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ textDecoration: 'none' }}>
+                Folgen auf Instagram →
+              </a>
             </div>
           </ScrollReveal>
 
-          <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
-          <div className="elfsight-app-b494d01d-c5d8-4bec-b1b5-f95560a64a42" data-elfsight-app-lazy />
+          <div className="insta-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '4px' }}>
+            {FALLBACK_INSTA_GRID.map((url, i) => (
+              <ScrollReveal key={i} delay={i * 60}>
+                <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
+                  <div style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg2)' }}
+                    className="insta-cell">
+                    <Image
+                      src={url}
+                      alt={`Instagram Post ${i + 1}`}
+                      fill
+                      style={{ objectFit: 'cover', transition: 'transform 0.5s ease, filter 0.5s ease', filter: 'grayscale(0.2)' }}
+                    />
+                    <div className="insta-overlay">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1.5" fill="white" stroke="none"/>
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal>
+            <div style={{ textAlign: 'center', marginTop: '32px' }}>
+              <p className="f-body" style={{ color: 'var(--muted)', fontSize: '0.85rem', marginBottom: '16px' }}>
+                Täglich neue Arbeiten auf Instagram
+              </p>
+              <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ textDecoration: 'none' }}>
+                Alle Posts ansehen
+              </a>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -268,9 +342,9 @@ export default function Home() {
         <div className="r-section" style={{ textAlign: 'center' }}>
           <ScrollReveal>
             <blockquote className="f-display" style={{ fontSize: 'clamp(1.6rem, 4vw, 3rem)', color: 'var(--bg)', lineHeight: 1.2, maxWidth: '900px', margin: '0 auto 16px' }}>
-              &ldquo;KUNST SOLLTE STÖREN. EIN TATTOO TUT ES — FÜR IMMER.&rdquo;
+              &ldquo;{artist.zitat}&rdquo;
             </blockquote>
-            <cite className="f-label" style={{ color: 'rgba(10,10,10,0.55)', fontStyle: 'normal' }}>— PETZKO, FEARLESS INC</cite>
+            <cite className="f-label" style={{ color: 'rgba(10,10,10,0.55)', fontStyle: 'normal' }}>— {artist.name}, FEARLESS INK</cite>
           </ScrollReveal>
         </div>
       </section>
