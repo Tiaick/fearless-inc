@@ -1,6 +1,7 @@
 import { buildConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -14,6 +15,17 @@ import { Settings } from './src/collections/Settings'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const db = process.env.DATABASE_URL
+  ? postgresAdapter({
+      pool: { connectionString: process.env.DATABASE_URL },
+      migrationDir: path.resolve(dirname, 'src/migrations'),
+    })
+  : sqliteAdapter({
+      client: {
+        url: `file:${path.resolve(dirname, '.data/fearless.db')}`,
+      },
+    })
+
 export default buildConfig({
   admin: {
     user: 'users',
@@ -25,12 +37,7 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URL || 'postgresql://localhost/unused',
-    },
-    migrationDir: path.resolve(dirname, 'src/migrations'),
-  }),
+  db,
   upload: {
     limits: {
       fileSize: 10_000_000, // 10MB
