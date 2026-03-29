@@ -1,4 +1,3 @@
-import { getGalerieBilder, getMediaUrl } from '@/lib/payload';
 import GalerieClient, { GalerieItem } from './GalerieClient';
 
 const FALLBACK_ITEMS: GalerieItem[] = [
@@ -37,20 +36,6 @@ const FALLBACK_ITEMS: GalerieItem[] = [
   { id: '33', src: '/images/tattoo-33.jpeg', alt: 'Tattoo Custom',     category: 'Custom',    w: 600, h: 800 },
 ];
 
-async function getGalerieItems(): Promise<GalerieItem[]> {
-  const data = await getGalerieBilder();
-  if (!data || data.length === 0) return FALLBACK_ITEMS;
-  return data.map((item: { id: string; image: { url?: string; width?: number; height?: number }; alt: string; category: string }) => ({
-    id: item.id,
-    src: getMediaUrl(item.image) ?? '',
-    alt: item.alt,
-    category: item.category,
-    w: item.image?.width || 600,
-    h: item.image?.height || 800,
-  })).filter((i: GalerieItem) => i.src);
-}
-
-export default async function GaleriePage() {
-  const items = await getGalerieItems();
-  return <GalerieClient items={items} />;
+export default function GaleriePage() {
+  return <GalerieClient items={FALLBACK_ITEMS} />;
 }

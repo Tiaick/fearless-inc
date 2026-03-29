@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
-import { getArtist, getTattooStile, getGalerieBilder, getMediaUrl } from '@/lib/payload';
-
-const FALLBACK_STILE = [
+const stile = [
   { titel: 'Realism', beschreibung: 'Fotorealistische Portraits, Tiere und Szenen in atemberaubender Detailtreue.' },
   { titel: 'Fine Line', beschreibung: 'Zarte, präzise Linienarbeit. Botanik, Porträts und geometrische Elemente.' },
   { titel: 'Geometric', beschreibung: 'Mandalas, Sacred Geometry und ornamentale Muster mit mathematischer Perfektion.' },
@@ -11,18 +9,18 @@ const FALLBACK_STILE = [
   { titel: 'Cover-Up', beschreibung: 'Alte Tattoos neu denken und professionell überarbeiten. Kreativ, präzise, endgültig.' },
 ];
 
-const FALLBACK_GRID = [
+const grid = [
   '/images/tattoo-01.jpeg', '/images/tattoo-02.jpeg', '/images/tattoo-03.jpeg',
   '/images/tattoo-04.jpeg', '/images/tattoo-05.jpeg', '/images/tattoo-06.jpeg',
   '/images/tattoo-07.jpeg', '/images/tattoo-08.jpeg', '/images/tattoo-09.jpeg',
-];
+].map(src => ({ src, alt: 'Tattoo Arbeit' }));
 
-const FALLBACK_INSTA_GRID = [
+const INSTA_GRID = [
   '/images/tattoo-10.jpeg', '/images/tattoo-11.jpeg', '/images/tattoo-12.jpeg',
   '/images/tattoo-13.jpeg', '/images/tattoo-14.jpeg', '/images/tattoo-16.jpeg',
 ];
 
-const FALLBACK_ARTIST = {
+const artist = {
   name: 'PETZKO',
   jahreErfahrung: 6,
   tattooCount: '2.000+',
@@ -32,31 +30,7 @@ const FALLBACK_ARTIST = {
   fotoSrc: '/images/petzko.png',
 };
 
-async function getData() {
-  const [stileRaw, gridRaw, artistRaw] = await Promise.all([
-    getTattooStile(),
-    getGalerieBilder(),
-    getArtist(),
-  ]);
-
-  const stile = stileRaw?.length > 0 ? stileRaw : FALLBACK_STILE;
-
-  const grid = gridRaw?.length > 0
-    ? gridRaw.slice(0, 9).map((item: { image: { url?: string }; alt: string }) => ({
-        src: getMediaUrl(item.image) ?? '',
-        alt: item.alt,
-      })).filter((i: { src: string }) => i.src)
-    : FALLBACK_GRID.map(src => ({ src, alt: 'Tattoo Arbeit' }));
-
-  const artist = artistRaw
-    ? { ...FALLBACK_ARTIST, ...artistRaw, fotoSrc: getMediaUrl(artistRaw.foto) ?? FALLBACK_ARTIST.fotoSrc }
-    : FALLBACK_ARTIST;
-
-  return { stile, grid, artist };
-}
-
-export default async function Home() {
-  const { stile, grid, artist } = await getData();
+export default function Home() {
 
   return (
     <>
@@ -295,7 +269,7 @@ export default async function Home() {
           </ScrollReveal>
 
           <div className="insta-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '4px' }}>
-            {FALLBACK_INSTA_GRID.map((url, i) => (
+            {INSTA_GRID.map((url, i) => (
               <ScrollReveal key={i} delay={i * 60}>
                 <a href="https://www.instagram.com/fearless.tattoo/" target="_blank" rel="noopener noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
                   <div style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg2)' }}
