@@ -199,10 +199,10 @@ export default function BuchenPage() {
           <ScrollReveal className="delay-1">
             <div style={{ border: '1px solid var(--border)', overflow: 'hidden', background: 'var(--bg2)' }}>
               <iframe
-                src="https://www.cal.eu/fearless"
+                src="https://calendly.com/keep-it-fair-info/neues-meeting?background_color=0d0d0d&text_color=ffffff&primary_color=c9a84c"
                 width="100%"
                 height="700"
-                style={{ border: 0, display: 'block', colorScheme: 'dark' }}
+                style={{ border: 0, display: 'block' }}
                 title="Termin buchen — Fearless Ink"
               />
             </div>
